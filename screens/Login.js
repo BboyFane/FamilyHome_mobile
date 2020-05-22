@@ -1,29 +1,29 @@
 import React from 'react';
-import { View, Text, TextInput, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import Card from '../components/Card';
-import Input from '../components/Input';
+// import Input from '../components/Input';
 import CustomButton from '../components/CustomButton';
 import Link from '../components/Link';
 
-const Login = props => {
+const Login = ({navigation}) => {
     let content = <View style={styles.fullscreen}>
         <Card style={styles.card}>
             <View>
                 <Text style={styles.title}>Se connecter à FamilyHome</Text>
                 <View>
-                    <Input style={styles.field} keyboardType='email-address'>Username1</Input>
-                    {/* <TextInput style={styles.field} placeholder='Username1' /> */}
+                    {/* <Input style={styles.field} keyboardType='email-address'>Username1</Input> */}
+                    <TextInput style={styles.field} placeholder="Nom d'utilisateur" />
                 </View>
                 <View>
-                    <Input style={styles.field}>Password1</Input>
-                    {/* <TextInput style={styles.field} placeholder='Password1' /> */}
+                    {/* <Input style={styles.field}>Password1</Input> */}
+                    <TextInput style={styles.field} placeholder='Mot de passe' secureTextEntry='TRUE'/>
                 </View>
             </View>
             <View style={styles.space}>
                 <CustomButton>Se connecter</CustomButton>
             </View>
             <View style={styles.space}>
-                <Link url='http://google.com'>Mot de passe oublié ?</Link>
+                <Button title='Mot de passe oublié ?' onPress={() => navigation.navigate('Forgot')}/>
             </View>
         </Card>
     </View>
