@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import Card from '../components/Card';
 import Input from '../components/Input';
 import CustomButton from '../components/CustomButton';
@@ -11,14 +11,14 @@ const Forgot = ({navigation}) => {
             <View>
                 <Text style={styles.title}>Mot de passe oublié ?</Text>
                 <View>
-                    <Input style={styles.field}>Email</Input>
-                    {/* <TextInput style={styles.field} placeholder='Username1' /> */}
+                    {/* <Input style={styles.field}>Email</Input> */}
+                    <TextInput style={styles.field} placeholder="Nom d'utilisateur ou email" textContentType='username' autoCapitalize='none'/>
                 </View>
             </View>
             <View style={styles.space}>
                 <CustomButton onPress={() => navigation.navigate('Submit')}>Réinitialiser</CustomButton>
             </View>
-            <View style={styles.space}>
+            <View>
                 <Button title='Se connecter' onPress={() => navigation.navigate('Login')}/>
             </View>
         </Card>

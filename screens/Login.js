@@ -3,7 +3,7 @@ import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import Card from '../components/Card';
 // import Input from '../components/Input';
 import CustomButton from '../components/CustomButton';
-import Link from '../components/Link';
+// import Link from '../components/Link';
 
 const Login = ({navigation}) => {
     let content = <View style={styles.fullscreen}>
@@ -12,31 +12,36 @@ const Login = ({navigation}) => {
                 <Text style={styles.title}>Se connecter à FamilyHome</Text>
                 <View>
                     {/* <Input style={styles.field} keyboardType='email-address'>Username1</Input> */}
-                    <TextInput style={styles.field} placeholder="Nom d'utilisateur" />
+                    <TextInput style={styles.field} placeholder="Nom d'utilisateur ou email" textContentType='username' autoCapitalize='none'/>
                 </View>
                 <View>
                     {/* <Input style={styles.field}>Password1</Input> */}
-                    <TextInput style={styles.field} placeholder='Mot de passe' secureTextEntry='TRUE'/>
+                    <TextInput style={styles.field} placeholder='Mot de passe' secureTextEntry={true} textContentType='password'/>
                 </View>
             </View>
             <View style={styles.space}>
-                <CustomButton>Se connecter</CustomButton>
+                <CustomButton onPress={() => navigation.navigate('Home')}>Se connecter</CustomButton>
             </View>
-            <View style={styles.space}>
+            <View>
                 <Button title='Mot de passe oublié ?' onPress={() => navigation.navigate('Forgot')}/>
             </View>
         </Card>
     </View>
-    return (
+    return (<View style={{flex:1}}>
         <View style={styles.card}>
             {content}
-        </View>
+        </View></View>
     )
 }
 
 const styles = StyleSheet.create({
     card: {
+        // flex: 1,
+        // marginTop: '25%',
+        justifyContent: 'center',
+        // alignItems: 'center',
         minWidth: '90%',
+        // maxHeight: '70°%',
         padding: 20,
     },
     fullscreen: {
