@@ -37,8 +37,8 @@ const Login = ({navigation}) => {
 const styles = StyleSheet.create({
     card: {
         // flex: 1,
-        // marginTop: '25%',
-        justifyContent: 'center',
+        marginTop: '25%',
+        // justifyContent: 'center',
         // alignItems: 'center',
         minWidth: '90%',
         // maxHeight: '70°%',

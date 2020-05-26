@@ -17,8 +17,10 @@ const renderListOfDevices = (val, index) => (
 const Room = ({ navigation }) => {
     return (
         <View style={styles.screen}>
-            <View>
-                <Text>Permanent</Text>
+            <View style={styles.inline}>
+                <Card style={styles.permanent}><Text>Music</Text></Card>
+                <Card style={styles.permanent}><Text>Light</Text></Card>
+                <Card style={styles.permanent}><Text>Plug</Text></Card>
             </View>
             <View style={styles.listOfElements}>
                 <ScrollView>
@@ -34,6 +36,15 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 10,
         alignItems: 'center'
+    },
+    inline: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        width: '90%',
+        marginVertical: 10
+    },
+    permanent: {
+        padding: '8%'
     },
     listOfElements: {
         flex: 1,

@@ -10,18 +10,17 @@ const renderListOfRooms = (val, index, {navigation}) => (
     <View key={index} style={styles.rooms}>
         <Card style={styles.room}>
         <Button title={val} onPress={() => navigation.navigate('Room')}/>
-        {/* <Button title={val} onPress={() => navigation.navigate(val)}/> */}
-            {/* <Text> */}
-                {/* {roundNumber} {val} */}
-            {/* </Text> */}
+        {/* <Button title={val} onPress={() => navigation.navigate({val})}/> */}
         </Card>
     </View>)
 
 const Home = ({ navigation }) => {
     return (
         <View style={styles.screen}>
-            <View>
-                <Text>Permanent</Text>
+            <View style={styles.inline}>
+                <Card style={styles.permanent}><Text>Music</Text></Card>
+                <Card style={styles.permanent}><Text>Light</Text></Card>
+                <Card style={styles.permanent}><Text>Plug</Text></Card>
             </View>
             <View style={styles.listOfElements}>
                 <ScrollView>
@@ -38,9 +37,19 @@ const styles = StyleSheet.create({
         padding: 10,
         alignItems: 'center'
     },
+    inline: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        width: '90%',
+        marginVertical: 10
+    },
+    permanent: {
+        padding: '8%'
+    },
     listOfElements: {
         flex: 1,
-        width: '80%'
+        width: '80%',
+        marginVertical: 10
     },
     rooms: {
         // flexDirection: 'row',

@@ -12,8 +12,13 @@ import Room from './screens/Room';
 
 const Stack = createStackNavigator();
 
+// Mocked data
+const rooms = ['Living room', "Daddy's room", 'Brother room', 'Kitchen', 'Bathroom']
+const renderListOfRooms = (name, id) => (
+  <Stack.Screen name={name} key={id} component={Room} options={{title: {name}}} />
+)
 export default function App() {
-  let content = <Login/>
+  // let content = <Login/>
   // let content = <Forgot/>
   // let content = <Submit />
   return (
@@ -29,6 +34,7 @@ export default function App() {
         <Stack.Screen name='Submit' component={Submit} options={{ title: 'En cours de réinitialisation' }} />
         <Stack.Screen name='Home' component={Home} options={{ title: 'Accueil' }} />
         <Stack.Screen name='Room' component={Room} options={{title: 'Room'}} />
+        {rooms.map((room, index) => renderListOfRooms(room, index))}
       </Stack.Navigator>
       {/* </View>
       </View> */}

@@ -32,6 +32,7 @@ const Forgot = ({navigation}) => {
 
 const styles = StyleSheet.create({
     card: {
+        marginTop: '25%',
         minWidth: '90%',
         padding: 20,
     },
