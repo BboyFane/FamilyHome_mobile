@@ -48,7 +48,8 @@ const styles = StyleSheet.create({
     },
     listOfElements: {
         flex: 1,
-        width: '80%'
+        width: '80%',
+        marginVertical: 10
     },
     devices: {
         // flexDirection: 'row',
