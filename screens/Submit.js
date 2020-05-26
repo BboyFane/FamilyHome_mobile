@@ -1,23 +1,23 @@
 import React from 'react';
-import { View, Text, TextInput, StyleSheet } from 'react-native';
+import { View, Text, Button, StyleSheet } from 'react-native';
 import Card from '../components/Card';
 import Link from '../components/Link';
 
-const Submit = props => {
+const Submit = ({navigation}) => {
     let content = <View style={styles.fullscreen}>
         <Card style={styles.card}>
             <View>
                 <Text style={styles.title}>Réinitialiser mon mot de passe</Text>
                 <Text style={styles.text}>
-                Vous allez recevoir un email pour réinitialiser votre mot de passe si un compte FamilyHome est bien associé à l'adresse mail renseignée.
-Veuillez vérifier votre boîte de spams.
+                    Vous allez recevoir un email pour réinitialiser votre mot de passe si un compte FamilyHome est bien associé à l'adresse mail renseignée.
+    Veuillez vérifier votre boîte de spams.
                 </Text>
             </View>
             {/* <View style={styles.space}>
                 <CustomButton>Se connecter</CustomButton>
             </View> */}
             <View style={styles.space}>
-                <Link url='http://google.com'>Se connecter</Link>
+                <Button title='Se connecter' onPress={() => navigation.navigate('Login')} />
             </View>
         </Card>
     </View>
@@ -30,6 +30,7 @@ Veuillez vérifier votre boîte de spams.
 
 const styles = StyleSheet.create({
     card: {
+        marginTop: '25%',
         minWidth: '90%',
         padding: 20,
     },

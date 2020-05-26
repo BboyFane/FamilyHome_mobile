@@ -1,25 +1,25 @@
 import React from 'react';
-import { View, Text, TextInput, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import Card from '../components/Card';
 import Input from '../components/Input';
 import CustomButton from '../components/CustomButton';
 import Link from '../components/Link';
 
-const Forgot = props => {
+const Forgot = ({navigation}) => {
     let content = <View style={styles.fullscreen}>
         <Card style={styles.card}>
             <View>
                 <Text style={styles.title}>Mot de passe oublié ?</Text>
                 <View>
-                    <Input style={styles.field}>Email</Input>
-                    {/* <TextInput style={styles.field} placeholder='Username1' /> */}
+                    {/* <Input style={styles.field}>Email</Input> */}
+                    <TextInput style={styles.field} placeholder="Nom d'utilisateur ou email" textContentType='username' autoCapitalize='none'/>
                 </View>
             </View>
             <View style={styles.space}>
-                <CustomButton>Envoyer</CustomButton>
+                <CustomButton onPress={() => navigation.navigate('Submit')}>Réinitialiser</CustomButton>
             </View>
-            <View style={styles.space}>
-                <Link url='http://google.com'>Se connecter</Link>
+            <View>
+                <Button title='Se connecter' onPress={() => navigation.navigate('Login')}/>
             </View>
         </Card>
     </View>
@@ -32,6 +32,7 @@ const Forgot = props => {
 
 const styles = StyleSheet.create({
     card: {
+        marginTop: '25%',
         minWidth: '90%',
         padding: 20,
     },
