@@ -1,16 +1,20 @@
 import React from 'react';
 import { View, Text, ScrollView, Button, StyleSheet } from 'react-native';
+// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Card from '../components/Card';
+// import Room from './Room';
+
+// const Tab = createBottomTabNavigator();
 
 // Mocked data
 const rooms = ['Living room', "Daddy's room", 'Brother room', 'Kitchen', 'Bathroom']
 // List of devices
-const renderListOfRooms = (val, index, {navigation}) => (
+const renderListOfRooms = (val, index, { navigation }) => (
     // <View key={index} style={}>
     <View key={index} style={styles.rooms}>
         <Card style={styles.room}>
-        <Button title={val} onPress={() => navigation.navigate('Room')}/>
-        {/* <Button title={val} onPress={() => navigation.navigate({val})}/> */}
+            <Button title={val} onPress={() => navigation.navigate('Room')} />
+            {/* <Button title={val} onPress={() => navigation.navigate({val})}/> */}
         </Card>
     </View>)
 
@@ -24,9 +28,13 @@ const Home = ({ navigation }) => {
             </View>
             <View style={styles.listOfElements}>
                 <ScrollView>
-                    {rooms.map((room, index) => renderListOfRooms(room, index, {navigation}))}
+                    {rooms.map((room, index) => renderListOfRooms(room, index, { navigation }))}
                 </ScrollView>
             </View>
+            {/* <Tab.Navigator>
+                <Tab.Screen name='Home' component={Home} options={{ title: 'Accueil' }} />
+                <Tab.Screen name='Room' component={Room} options={{ title: 'Room' }} />
+            </Tab.Navigator> */}
         </View>
     )
 }
