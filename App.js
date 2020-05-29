@@ -42,9 +42,9 @@ export default function App() {
         <Stack.Screen name='Room' component={Room} options={{title: 'Room'}} />
         {rooms.map((room, index) => renderListOfRooms(room, index))}
         <Stack.Screen name='HomeShare' component={HomeShare} options={{title: 'HomeShare'}} />
-        <Stack.Screen name='Profile' component={Profile} options={{title: 'Profile'}} />
-        <Stack.Screen name='Map' component={Map} options={{title: 'Map'}} />
-        <Stack.Screen name='Notes' component={Notes} options={{title: 'Notes'}} />
+        <Stack.Screen name='Profile' component={Profile} options={{title: 'Profil'}} />
+        <Stack.Screen name='Map' component={Map} options={{title: 'Carte'}} />
+        <Stack.Screen name='Notes' component={Notes} options={{title: 'HomeNotes'}} />
         <Stack.Screen name='Note' component={Note} options={{title: 'Note'}} />
         <Stack.Screen name='PhilipsHue' component={PhilipsHue} options={{title: 'PhilipsHue'}} />
       </Stack.Navigator>
