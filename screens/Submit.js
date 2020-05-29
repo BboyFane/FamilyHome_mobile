@@ -3,7 +3,7 @@ import { View, Text, Button, StyleSheet } from 'react-native';
 import Card from '../components/Card';
 import Link from '../components/Link';
 
-const Submit = ({navigation}) => {
+const Submit = ({ navigation }) => {
     let content = <View style={styles.fullscreen}>
         <Card style={styles.card}>
             <View>
@@ -22,15 +22,22 @@ const Submit = ({navigation}) => {
         </Card>
     </View>
     return (
-        <View style={styles.card}>
-            {content}
+        <View style={styles.screen}>
+            <View style={styles.card}>
+                {content}
+            </View>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
+    screen: {
+        flex: 1,
+        // padding: 10,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     card: {
-        marginTop: '25%',
         minWidth: '90%',
         padding: 20,
     },

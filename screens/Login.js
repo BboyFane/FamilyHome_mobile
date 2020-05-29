@@ -5,39 +5,46 @@ import Card from '../components/Card';
 import CustomButton from '../components/CustomButton';
 // import Link from '../components/Link';
 
-const Login = ({navigation}) => {
+const Login = ({ navigation }) => {
     let content = <View style={styles.fullscreen}>
         <Card style={styles.card}>
             <View>
                 <Text style={styles.title}>Se connecter à FamilyHome</Text>
                 <View>
                     {/* <Input style={styles.field} keyboardType='email-address'>Username1</Input> */}
-                    <TextInput style={styles.field} placeholder="Nom d'utilisateur ou email" textContentType='username' autoCapitalize='none'/>
+                    <TextInput style={styles.field} placeholder="Nom d'utilisateur ou email" textContentType='username' autoCapitalize='none' />
                 </View>
                 <View>
                     {/* <Input style={styles.field}>Password1</Input> */}
-                    <TextInput style={styles.field} placeholder='Mot de passe' secureTextEntry={true} textContentType='password'/>
+                    <TextInput style={styles.field} placeholder='Mot de passe' secureTextEntry={true} textContentType='password' />
                 </View>
             </View>
             <View style={styles.space}>
                 <CustomButton onPress={() => navigation.navigate('Home')}>Se connecter</CustomButton>
             </View>
             <View>
-                <Button title='Mot de passe oublié ?' onPress={() => navigation.navigate('Forgot')}/>
+                <Button title='Mot de passe oublié ?' onPress={() => navigation.navigate('Forgot')} />
             </View>
         </Card>
     </View>
-    return (<View style={{flex:1}}>
-        <View style={styles.card}>
-            {content}
-        </View></View>
+    return (
+        <View style={styles.screen}>
+            <View style={styles.card}>
+                {content}
+            </View>
+        </View>
     )
 }
 
 const styles = StyleSheet.create({
+    screen: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     card: {
         // flex: 1,
-        marginTop: '25%',
+        // marginTop: '25%',
         // justifyContent: 'center',
         // alignItems: 'center',
         minWidth: '90%',

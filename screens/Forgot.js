@@ -5,34 +5,40 @@ import Input from '../components/Input';
 import CustomButton from '../components/CustomButton';
 import Link from '../components/Link';
 
-const Forgot = ({navigation}) => {
+const Forgot = ({ navigation }) => {
     let content = <View style={styles.fullscreen}>
         <Card style={styles.card}>
             <View>
                 <Text style={styles.title}>Mot de passe oublié ?</Text>
                 <View>
                     {/* <Input style={styles.field}>Email</Input> */}
-                    <TextInput style={styles.field} placeholder="Nom d'utilisateur ou email" textContentType='username' autoCapitalize='none'/>
+                    <TextInput style={styles.field} placeholder="Nom d'utilisateur ou email" textContentType='username' autoCapitalize='none' />
                 </View>
             </View>
             <View style={styles.space}>
                 <CustomButton onPress={() => navigation.navigate('Submit')}>Réinitialiser</CustomButton>
             </View>
             <View>
-                <Button title='Se connecter' onPress={() => navigation.navigate('Login')}/>
+                <Button title='Se connecter' onPress={() => navigation.navigate('Login')} />
             </View>
         </Card>
     </View>
     return (
-        <View style={styles.card}>
-            {content}
+        <View style={styles.screen}>
+            <View style={styles.card}>
+                {content}
+            </View>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
+    screen: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     card: {
-        marginTop: '25%',
         minWidth: '90%',
         padding: 20,
     },
