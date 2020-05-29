@@ -16,5 +16,5 @@ For more information, you can refer to the official [Getting Started guide](http
 1. react-native run-android don't work: SOLVED: go to fix 1
 
 ## Fix
-1. To fix android app: run this cmd in the folder `Android`
+1. To fix android app: run this cmd in the folder **Android**
 ./gradlew clean && ./gradlew :app:bundleRelease
