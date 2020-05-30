@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, Button, StyleSheet } from 'react-native';
 import Card from '../components/Card';
 
 const Username = 'Emerick';
 const Fullname = 'Emerick Miatti';
 
-const Profile = props => {
+const Profile = ({navigation}) => {
     return (
         <View style={styles.screen}>
             <View style={styles.listOfElements}>
@@ -14,7 +14,7 @@ const Profile = props => {
                     <Text>{Fullname}</Text>
                     <Text>Changer de photo de profil</Text>
                 </Card>
-                <Card style={styles.rectangle}><Text>Se déconnecter</Text></Card>
+                <Card style={styles.rectangle}><Button title='Se déconnecter' onPress={() => navigation.navigate('Login')} /></Card>
             </View>
         </View>
     )

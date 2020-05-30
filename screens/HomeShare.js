@@ -1,13 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Button, StyleSheet } from 'react-native';
 import Card from '../components/Card';
 
-const HomeShare = props => {
+const HomeShare = ({navigation}) => {
     return (
         <View style={styles.screen}>
             <View style={styles.listOfElements}>
-                <Card style={styles.rectangle}><Text>Localisation</Text></Card>
-                <Card style={styles.rectangle}><Text>Notes</Text></Card>
+            <Card style={styles.rectangle}><Button title='Localisation' onPress={() => navigation.navigate('Map')}/></Card>
+                <Card style={styles.rectangle}><Button title='Notes' onPress={() => navigation.navigate('Notes')}/></Card>
             </View>
         </View>
     )

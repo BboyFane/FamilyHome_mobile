@@ -5,12 +5,12 @@ import Card from '../components/Card';
 // Mocked data
 const rooms = ['Living room', "Daddy's room", 'Brother room', 'Kitchen', 'Bathroom']
 // List of devices
-const renderListOfRooms = (val, index, {navigation}) => (
+const renderListOfRooms = (val, index, { navigation }) => (
     // <View key={index} style={}>
     <View key={index} style={styles.rooms}>
         <Card style={styles.room}>
-        <Button title={val} onPress={() => navigation.navigate('Room')}/>
-        {/* <Button title={val} onPress={() => navigation.navigate({val})}/> */}
+            <Button title={val} onPress={() => navigation.navigate('Room')} />
+            {/* <Button title={val} onPress={() => navigation.navigate({val})}/> */}
         </Card>
     </View>)
 
@@ -24,8 +24,14 @@ const Home = ({ navigation }) => {
             </View>
             <View style={styles.listOfElements}>
                 <ScrollView>
-                    {rooms.map((room, index) => renderListOfRooms(room, index, {navigation}))}
+                    {rooms.map((room, index) => renderListOfRooms(room, index, { navigation }))}
                 </ScrollView>
+            </View>
+            {/* Tabbar */}
+            <View style={styles.inline}>
+                <Card style={styles.tabbar}><Button title='Home' onPress={() => navigation.navigate('Home')} /></Card>
+                <Card style={styles.tabbar}><Button title='HomeShare' onPress={() => navigation.navigate('HomeShare')} /></Card>
+                <Card style={styles.tabbar}><Button title='Profil' onPress={() => navigation.navigate('Profile')} /></Card>
             </View>
         </View>
     )
@@ -62,6 +68,9 @@ const styles = StyleSheet.create({
     },
     room: {
         padding: 40
+    },
+    tabbar: {
+        width: '33%'
     }
 })
 

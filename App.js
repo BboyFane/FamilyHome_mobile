@@ -32,7 +32,7 @@ export default function App() {
       {/* <View style={styles.background}>
       <Header title='FAMILYHOME' />
       <View style={styles.centered}> */}
-      <Stack.Navigator initialRouteName='Login'>
+      <Stack.Navigator initialRouteName='Home'>
         {/* <Login/> */}
         {/* {content} */}
         <Stack.Screen name='Login' component={Login} options={{ title: 'Bienvenue' }} />

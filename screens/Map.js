@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-const Map = props => {
+const Map = ({navigation}) => {
     return (
         <View></View>
     )
