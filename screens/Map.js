@@ -1,12 +1,20 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
-const Map = ({navigation}) => {
+const Map = ({ navigation }) => {
     return (
-        <View></View>
+        <View style={styles.screen}>
+            <Text>Will display default map of the device or Google Map in our app</Text>
+        </View>
     )
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    screen: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
+})
 
 export default Map;
