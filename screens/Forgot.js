@@ -1,33 +1,23 @@
 import React from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button, Alert, StyleSheet } from 'react-native';
 import Card from '../components/Card';
-import Input from '../components/Input';
 import CustomButton from '../components/CustomButton';
-import Link from '../components/Link';
 
 const Forgot = ({ navigation }) => {
-    let content = <View style={styles.fullscreen}>
-        <Card style={styles.card}>
-            <View>
-                <Text style={styles.title}>Mot de passe oublié ?</Text>
-                <View>
-                    {/* <Input style={styles.field}>Email</Input> */}
-                    <TextInput style={styles.field} placeholder="Nom d'utilisateur ou email" textContentType='username' autoCapitalize='none' />
-                </View>
-            </View>
-            <View style={styles.space}>
-                <CustomButton onPress={() => navigation.navigate('Submit')}>Réinitialiser</CustomButton>
-            </View>
-            <View>
-                <Button title='Se connecter' onPress={() => navigation.navigate('Login')} />
-            </View>
-        </Card>
-    </View>
+    const submit = () => {
+        Alert.alert('Réinitialiser le mot de passe', 'Vous allez recevoir un email pour réinitialiser votre mot de passe si un compte FamilyHome est bien associé à l\'adresse mail renseignée.\n Veuillez vérifier votre boîte de spams.', [{text: 'OK', onPress: () => resetPassword}])
+    }
+    const resetPassword = () => {}
     return (
         <View style={styles.screen}>
-            <View style={styles.card}>
-                {content}
-            </View>
+            <Card style={styles.card}>
+                <Text style={styles.title}>Mot de passe oublié ?</Text>
+                <TextInput style={styles.field} placeholder="Nom d'utilisateur ou email" textContentType='username' autoCapitalize='none' />
+                <View style={styles.space}>
+                    <CustomButton onPress={submit}>Réinitialiser</CustomButton>
+                </View>
+                <Button title='Se connecter' onPress={() => navigation.navigate('Login')} />
+            </Card>
         </View>
     )
 }
@@ -36,16 +26,12 @@ const styles = StyleSheet.create({
     screen: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        padding: 35
     },
     card: {
-        minWidth: '90%',
-        padding: 20,
-    },
-    fullscreen: {
-        // flex: 1,
-        padding: 15,
-        alignItems: 'center'
+        minWidth: '100%',
+        padding: 20
     },
     title: {
         textAlign: 'center',
@@ -54,7 +40,6 @@ const styles = StyleSheet.create({
     field: {
         borderWidth: 1,
         borderColor: '#2F2F2F',
-        // backgroundColor: '#AAAAAA',
         borderRadius: 5,
         padding: 5,
         paddingLeft: 20,
@@ -62,7 +47,6 @@ const styles = StyleSheet.create({
     },
     space: {
         alignItems: 'center',
-        minWidth: '100%',
         padding: 10
     }
 })

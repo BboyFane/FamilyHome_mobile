@@ -1,14 +1,18 @@
 import React from 'react';
 import { View, Text, ScrollView, Button, StyleSheet } from 'react-native';
+// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Card from '../components/Card';
+// import Room from './Room';
+
+// const Tab = createBottomTabNavigator();
 
 // Mocked data
 const rooms = ['Living room', "Daddy's room", 'Brother room', 'Kitchen', 'Bathroom']
 // List of devices
 const renderListOfRooms = (val, index, { navigation }) => (
     // <View key={index} style={}>
-    <View key={index} style={styles.rooms}>
-        <Card style={styles.room}>
+    <View key={index} style={styles.rectangles}>
+        <Card style={styles.rectangle}>
             <Button title={val} onPress={() => navigation.navigate('Room')} />
             {/* <Button title={val} onPress={() => navigation.navigate({val})}/> */}
         </Card>
@@ -57,7 +61,7 @@ const styles = StyleSheet.create({
         width: '80%',
         marginVertical: 10
     },
-    rooms: {
+    rectangles: {
         // flexDirection: 'row',
         // flex: 1,
         // borderColor: '#EEAAAA',
@@ -66,7 +70,7 @@ const styles = StyleSheet.create({
         padding: 5,
         textAlign: 'center'
     },
-    room: {
+    rectangle: {
         padding: 40
     },
     tabbar: {
