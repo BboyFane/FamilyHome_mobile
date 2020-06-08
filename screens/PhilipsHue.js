@@ -6,8 +6,8 @@ const PhilipsHue = props => {
     return (
         <View style={styles.screen}>
             <View style={styles.listOfElements}>
-                <Text style={styles.name}>Nom de l'ampoule</Text>
-                <Card style={styles.permanent}><Text>Light</Text></Card>
+                <Text style={styles.title}>Nom de l'ampoule</Text>
+                <Card style={styles.rectangle}><Text>Light</Text></Card>
             </View>
         </View>
     )
@@ -19,18 +19,17 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     listOfElements: {
-        width: '80%'
+        flex: 1,
+        width: '80%',
+        marginVertical: 10
     },
-    name: {
-        textAlign: 'center'
+    title: {
+        textAlign: 'center',
+        marginBottom: 20
     },
     rectangle: {
         marginVertical: 10,
-        padding: 40,
-        textAlign: 'center'
-    },
-    permanent: {
-        padding: '8%'
+        padding: 40
     },
 })
 

@@ -5,7 +5,7 @@ import Card from '../components/Card';
 const Username = 'Emerick';
 const Fullname = 'Emerick Miatti';
 
-const Profile = ({navigation}) => {
+const Profile = ({ navigation }) => {
     return (
         <View style={styles.screen}>
             <View style={styles.listOfElements}>
@@ -14,7 +14,9 @@ const Profile = ({navigation}) => {
                     <Text>{Fullname}</Text>
                     <Text>Changer de photo de profil</Text>
                 </Card>
-                <Card style={styles.rectangle}><Button title='Se déconnecter' onPress={() => navigation.navigate('Login')} /></Card>
+                <Card style={styles.rectangle}>
+                    <Button title='Se déconnecter' onPress={() => navigation.navigate('Login')} />
+                </Card>
             </View>
         </View>
     )
@@ -26,12 +28,13 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     listOfElements: {
+        flex: 1,
         width: '80%',
+        marginVertical: 10
     },
     rectangle: {
         marginVertical: 10,
-        padding: 40,
-        textAlign: 'center'
+        padding: 40
     }
 })
 

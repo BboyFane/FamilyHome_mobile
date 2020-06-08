@@ -7,7 +7,9 @@ const notes = ['wesh les potos', 'les shinigamis mangent des pommes', "j'ai gagn
 // List of notes
 const renderListOfNotes = (val, index, { navigation }) => (
     <View key={index} style={styles.rectangles}>
-        <Card style={styles.rectangle}><Button title={val} onPress={() => navigation.navigate('Note')} /></Card>
+        <Card style={styles.rectangle}>
+            <Button title={val} onPress={() => navigation.navigate('Note')} />
+        </Card>
     </View>
 )
 const Notes = ({ navigation }) => {
@@ -25,7 +27,6 @@ const Notes = ({ navigation }) => {
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
-        justifyContent: 'center',
         alignItems: 'center'
     },
     listOfElements: {
@@ -34,14 +35,11 @@ const styles = StyleSheet.create({
         marginVertical: 10
     },
     rectangles: {
-        // marginVertical: 10,
-        padding: 5,
-        textAlign: 'center'
+        padding: 5
     },
     rectangle: {
         marginVertical: 10,
-        padding: 40,
-        textAlign: 'center'
+        padding: 40
     }
 })
 

@@ -4,7 +4,7 @@ import { View, TextInput, StyleSheet } from 'react-native';
 const Note = props => {
     return (
         <View style={styles.note}>
-            <TextInput style={styles.title}>Yo poto</TextInput>
+            <TextInput style={styles.titleNote}>Yo poto</TextInput>
             <View style={styles.separator}></View>
             <TextInput style={styles.text}>Yo poto (du texte)</TextInput>
         </View>
@@ -14,9 +14,8 @@ const Note = props => {
 const styles = StyleSheet.create({
     note: {
         // flex: 1
-        // marginHorizontal: 10,
     },
-    title: {
+    titleNote: {
         margin: 10,
         fontWeight: 'bold',
         fontSize: 18
@@ -26,8 +25,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1
     },
     text: {
-        margin: 10,
-        width: '100%'
+        margin: 10
     },
 })
 
