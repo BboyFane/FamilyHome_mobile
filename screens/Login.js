@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import Card from '../components/Card';
 import CustomButton from '../components/CustomButton';
+import UserToken from '../contexts/UserTokenContext';
+
+// const verification = data => { }
+
+const isSuccessful = token => {
+    navigate = navigate('Home') // delete when next line operational
+    // console.log('userToken before press: ',userToken);
+    // userToken = 'token value is updated'
+    // console.log('New value userToken: ',userToken);
+}
 
 const Login = ({ navigation }) => {
+    // No need to put let or const since there's '= something',
+    navigate = navigation.navigate // Is a Function
+    // userToken = UserToken // Is an Object
     return (
         <View style={styles.screen}>
             <Card style={styles.card}>
@@ -11,7 +24,7 @@ const Login = ({ navigation }) => {
                 <TextInput style={styles.field} placeholder="Nom d'utilisateur ou email" textContentType='username' autoCapitalize='none' />
                 <TextInput style={styles.field} placeholder='Mot de passe' secureTextEntry={true} textContentType='password' />
                 <View style={styles.space}>
-                    <CustomButton onPress={() => navigation.navigate('Home')}>Se connecter</CustomButton>
+                    <CustomButton onPress={isSuccessful}>Se connecter</CustomButton>
                 </View>
                 <Button title='Mot de passe oublié ?' onPress={() => navigation.navigate('Forgot')} />
             </Card>
