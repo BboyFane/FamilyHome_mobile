@@ -3,14 +3,19 @@ import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import Card from '../components/Card';
 import CustomButton from '../components/CustomButton';
 import UserToken from '../contexts/UserTokenContext';
+import AsyncStorage from '@react-native-community/async-storage';
 
 // const verification = data => { }
 
-const isSuccessful = token => {
+const isSuccessful = async() => {
     navigate = navigate('Home') // delete when next line operational
     // console.log('userToken before press: ',userToken);
     // userToken = 'token value is updated'
     // console.log('New value userToken: ',userToken);
+    await AsyncStorage.setItem('authToken', 'val du token')
+    let a = await AsyncStorage.getItem('authToken')
+    console.log(a);
+    return true
 }
 
 const Login = ({ navigation }) => {
