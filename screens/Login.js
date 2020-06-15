@@ -8,7 +8,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 // const verification = data => { }
 
 const isSuccessful = async() => {
-    navigate = navigate('Home') // delete when next line operational
+    navigate('Home') // delete when next line operational
     // console.log('userToken before press: ',userToken);
     // userToken = 'token value is updated'
     // console.log('New value userToken: ',userToken);

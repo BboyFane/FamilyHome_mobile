@@ -29,12 +29,6 @@ const Home = ({ navigation }) => {
                     {rooms.map((room, index) => renderListOfRooms(room, index, { navigation }))}
                 </ScrollView>
             </View>
-            {/* Tabbar */}
-            <View style={styles.inline}>
-                <Card style={styles.tabbar}><Button title='Home' onPress={() => navigation.navigate('Home')} /></Card>
-                <Card style={styles.tabbar}><Button title='HomeShare' onPress={() => navigation.navigate('HomeShare')} /></Card>
-                <Card style={styles.tabbar}><Button title='Profil' onPress={() => navigation.navigate('Profile')} /></Card>
-            </View>
         </View>
     )
 }
