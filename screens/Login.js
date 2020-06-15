@@ -7,7 +7,7 @@ import UserToken from '../contexts/UserTokenContext';
 // const verification = data => { }
 
 const isSuccessful = token => {
-    navigate = navigate('Home') // delete when next line operational
+    navigate('FamilyHome') // delete when next line operational
     // console.log('userToken before press: ',userToken);
     // userToken = 'token value is updated'
     // console.log('New value userToken: ',userToken);
