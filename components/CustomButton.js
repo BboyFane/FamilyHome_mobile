@@ -2,11 +2,13 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 const CustomButton = props => {
-    return <TouchableOpacity activeOpacity={0.7} onPress={props.onPress}>
-        <View style={{...styles.button, ...props.style}}>
-            <Text style={styles.buttonText}>{props.children}</Text>
-        </View>
-    </TouchableOpacity>
+    return (
+        <TouchableOpacity activeOpacity={0.7} onPress={props.onPress}>
+            <View style={{ ...styles.button, ...props.style }}>
+                <Text style={styles.buttonText}>{props.children}</Text>
+            </View>
+        </TouchableOpacity>
+    )
 };
 
 const styles = StyleSheet.create({

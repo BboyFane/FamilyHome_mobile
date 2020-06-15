@@ -1,53 +1,47 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import Card from '../components/Card';
-// import Input from '../components/Input';
 import CustomButton from '../components/CustomButton';
-// import Link from '../components/Link';
+import UserToken from '../contexts/UserTokenContext';
 
-const Login = ({navigation}) => {
-    let content = <View style={styles.fullscreen}>
-        <Card style={styles.card}>
-            <View>
+// const verification = data => { }
+
+const isSuccessful = token => {
+    navigate = navigate('Home') // delete when next line operational
+    // console.log('userToken before press: ',userToken);
+    // userToken = 'token value is updated'
+    // console.log('New value userToken: ',userToken);
+}
+
+const Login = ({ navigation }) => {
+    // No need to put let or const since there's '= something',
+    navigate = navigation.navigate // Is a Function
+    // userToken = UserToken // Is an Object
+    return (
+        <View style={styles.screen}>
+            <Card style={styles.card}>
                 <Text style={styles.title}>Se connecter à FamilyHome</Text>
-                <View>
-                    {/* <Input style={styles.field} keyboardType='email-address'>Username1</Input> */}
-                    <TextInput style={styles.field} placeholder="Nom d'utilisateur ou email" textContentType='username' autoCapitalize='none'/>
+                <TextInput style={styles.field} placeholder="Nom d'utilisateur ou email" textContentType='username' autoCapitalize='none' />
+                <TextInput style={styles.field} placeholder='Mot de passe' secureTextEntry={true} textContentType='password' />
+                <View style={styles.space}>
+                    <CustomButton onPress={isSuccessful}>Se connecter</CustomButton>
                 </View>
-                <View>
-                    {/* <Input style={styles.field}>Password1</Input> */}
-                    <TextInput style={styles.field} placeholder='Mot de passe' secureTextEntry={true} textContentType='password'/>
-                </View>
-            </View>
-            <View style={styles.space}>
-                <CustomButton onPress={() => navigation.navigate('Home')}>Se connecter</CustomButton>
-            </View>
-            <View>
-                <Button title='Mot de passe oublié ?' onPress={() => navigation.navigate('Forgot')}/>
-            </View>
-        </Card>
-    </View>
-    return (<View style={{flex:1}}>
-        <View style={styles.card}>
-            {content}
-        </View></View>
+                <Button title='Mot de passe oublié ?' onPress={() => navigation.navigate('Forgot')} />
+            </Card>
+        </View>
     )
 }
 
 const styles = StyleSheet.create({
-    card: {
-        // flex: 1,
-        marginTop: '25%',
-        // justifyContent: 'center',
-        // alignItems: 'center',
-        minWidth: '90%',
-        // maxHeight: '70°%',
-        padding: 20,
+    screen: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 35
     },
-    fullscreen: {
-        // flex: 1,
-        padding: 15,
-        // alignItems: 'center'
+    card: {
+        minWidth: '100%',
+        padding: 20
     },
     title: {
         textAlign: 'center',
@@ -56,15 +50,13 @@ const styles = StyleSheet.create({
     field: {
         borderWidth: 1,
         borderColor: '#2F2F2F',
-        // backgroundColor: '#AAAAAA',
         borderRadius: 5,
         padding: 5,
-        paddingLeft: 20,
+        paddingHorizontal: 20,
         margin: 5
     },
     space: {
         alignItems: 'center',
-        minWidth: '100%',
         padding: 10
     }
 })
