@@ -8,14 +8,14 @@ import AsyncStorage from '@react-native-community/async-storage';
 // const verification = data => { }
 
 const isSuccessful = async() => {
-    navigate('Home') // delete when next line operational
+    navigate('FamilyHome') // delete when next line operational
     // console.log('userToken before press: ',userToken);
     // userToken = 'token value is updated'
     // console.log('New value userToken: ',userToken);
-    await AsyncStorage.setItem('authToken', 'val du token')
-    let a = await AsyncStorage.getItem('authToken')
-    console.log(a);
-    return true
+    // await AsyncStorage.setItem('authToken', 'val du token')
+    // let a = await AsyncStorage.getItem('authToken')
+    // console.log(a);
+    // return true
 }
 
 const Login = ({ navigation }) => {

@@ -1,8 +1,8 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Home from '../screens/Home';
-import HomeShare from '../screens/HomeShare';
-import Profile from '../screens/Profile';
+import Home from './Home';
+import HomeShare from './HomeShare';
+import Profile from './Profile';
 import Icons from 'react-native-vector-icons/MaterialIcons';
 
 const Tab = createBottomTabNavigator();

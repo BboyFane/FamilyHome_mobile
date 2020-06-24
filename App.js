@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Login from './screens/Login';
 import Forgot from './screens/Forgot';
-import TabBar from './components/TabBar';
+import TabBar from './screens/TabBar';
 import Room from './screens/Room';
 import Map from './screens/Map';
 import Notes from './screens/Notes';
