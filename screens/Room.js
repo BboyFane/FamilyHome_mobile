@@ -1,14 +1,16 @@
 import React from 'react';
-import { View, Text, ScrollView, Button, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import Card from '../components/Card';
+import CustomButton from '../components/CustomButton';
+import Icons from 'react-native-vector-icons/MaterialIcons';
 
 // Mocked data
 const devices = ['google home', 'philips hue', 'light', 'fav light', 'plug']
 // List of devices
 const renderListOfDevices = (val, index) => (
-    <View key={index} style={styles.rectangles}>
+    <View key={index} style={styles.scroll}>
         <Card style={styles.rectangle}>
-            <Button title={val} onPress={() => { }} />
+            <CustomButton title={val} onPress={() => { }} buttonStyle={styles.button} />
         </Card>
     </View>)
 
@@ -16,9 +18,9 @@ const Room = props => {
     return (
         <View style={styles.screen}>
             <View style={styles.inline}>
-                <Card style={styles.permanent}><Text style={styles.centered}>Music</Text></Card>
-                <Card style={styles.permanent}><Text style={styles.centered}>Light</Text></Card>
-                <Card style={styles.permanent}><Text style={styles.centered}>Plug</Text></Card>
+                <Card style={styles.permanent}><Icons name="album" color={'#8E8E8F'} size={24} /><Text style={styles.centered}>Music</Text></Card>
+                <Card style={styles.permanent}><Icons name="album" color={'#8E8E8F'} size={24} /><Text style={styles.centered}>Light</Text></Card>
+                <Card style={styles.permanent}><Icons name="album" color={'#8E8E8F'} size={24} /><Text style={styles.centered}>Plug</Text></Card>
             </View>
             <View style={styles.listOfElements}>
                 <ScrollView>
@@ -56,12 +58,14 @@ const styles = StyleSheet.create({
         width: '80%',
         marginVertical: 10
     },
-    rectangles: {
-        padding: 5
+    scroll: {
+        paddingHorizontal: 5
     },
     rectangle: {
         marginVertical: 10,
-        padding: 40
+    },
+    button: {
+        minHeight: 100
     }
 })
 

@@ -1,18 +1,16 @@
 import React from 'react';
-import { View, Text, ScrollView, Button, StyleSheet } from 'react-native';
-// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import Card from '../components/Card';
-// import Room from './Room';
-
-// const Tab = createBottomTabNavigator();
+import CustomButton from '../components/CustomButton';
+import Icons from 'react-native-vector-icons/MaterialIcons';
 
 // Mocked data
 const rooms = ['Living room', "Daddy's room", 'Brother room', 'Kitchen', 'Bathroom']
 // List of devices
 const renderListOfRooms = (val, index, { navigation }) => (
-    <View key={index} style={styles.rectangles}>
+    <View key={index} style={styles.scroll}>
         <Card style={styles.rectangle}>
-            <Button title={val} onPress={() => navigation.navigate('Room')} />
+            <CustomButton title={val} onPress={() => navigation.navigate('Room')} buttonStyle={styles.button} />
         </Card>
     </View>)
 
@@ -20,9 +18,9 @@ const Home = ({ navigation }) => {
     return (
         <View style={styles.screen}>
             <View style={styles.inline}>
-                <Card style={styles.permanent}><Text style={styles.centered}>Music</Text></Card>
-                <Card style={styles.permanent}><Text style={styles.centered}>Light</Text></Card>
-                <Card style={styles.permanent}><Text style={styles.centered}>Plug</Text></Card>
+                <Card style={styles.permanent}><Icons name="album" color={'#8E8E8F'} size={24} /><Text style={styles.centered}>Music</Text></Card>
+                <Card style={styles.permanent}><Icons name="album" color={'#8E8E8F'} size={24} /><Text style={styles.centered}>Light</Text></Card>
+                <Card style={styles.permanent}><Icons name="album" color={'#8E8E8F'} size={24} /><Text style={styles.centered}>Plug</Text></Card>
             </View>
             <View style={styles.listOfElements}>
                 <ScrollView>
@@ -60,15 +58,14 @@ const styles = StyleSheet.create({
         width: '80%',
         marginVertical: 10
     },
-    rectangles: {
-        padding: 5
+    scroll: {
+        paddingHorizontal: 5
     },
     rectangle: {
-        marginVertical: 10,
-        padding: 40
+        marginVertical: 10
     },
-    tabbar: {
-        width: '33%'
+    button: {
+        minHeight: 100
     }
 })
 
