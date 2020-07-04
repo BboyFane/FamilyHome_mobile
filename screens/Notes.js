@@ -1,14 +1,15 @@
 import React from 'react';
-import { View, ScrollView, Button, StyleSheet } from 'react-native';
+import { View, ScrollView, StyleSheet } from 'react-native';
 import Card from '../components/Card';
+import CustomButton from '../components/CustomButton';
 
 // Mocked data
 const notes = ['wesh les potos', 'les shinigamis mangent des pommes', "j'ai gagné"]
 // List of notes
 const renderListOfNotes = (val, index, { navigation }) => (
-    <View key={index} style={styles.rectangles}>
+    <View key={index} style={styles.scroll}>
         <Card style={styles.rectangle}>
-            <Button title={val} onPress={() => navigation.navigate('Note')} />
+            <CustomButton title={val} onPress={() => navigation.navigate('Note')} buttonStyle={styles.button} />
         </Card>
     </View>
 )
@@ -34,12 +35,14 @@ const styles = StyleSheet.create({
         width: '80%',
         marginVertical: 10
     },
-    rectangles: {
-        padding: 5
+    scroll: {
+        paddingHorizontal: 5
     },
     rectangle: {
-        marginVertical: 10,
-        padding: 40
+        marginVertical: 10
+    },
+    button: {
+        minHeight: 100
     }
 })
 

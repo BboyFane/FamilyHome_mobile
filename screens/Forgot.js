@@ -12,9 +12,9 @@ const Forgot = ({ navigation }) => {
         <View style={styles.screen}>
             <Card style={styles.card}>
                 <Text style={styles.title}>Mot de passe oublié ?</Text>
-                <TextInput style={styles.field} placeholder="Nom d'utilisateur ou email" textContentType='username' autoCapitalize='none' />
+                <TextInput style={styles.field} placeholder="Adresse email" textContentType='username' autoCapitalize='none' />
                 <View style={styles.space}>
-                    <CustomButton onPress={submit}>Réinitialiser</CustomButton>
+                    <CustomButton title='Réinitialiser' onPress={submit} buttonStyle={styles.buttonLogin} textStyle={styles.textLogin}/>
                 </View>
                 <Button title='Se connecter' onPress={() => navigation.navigate('Login')} />
             </Card>
@@ -48,6 +48,17 @@ const styles = StyleSheet.create({
     space: {
         alignItems: 'center',
         padding: 10
+    },
+    buttonLogin: {
+        backgroundColor: '#DCDCDC',
+        paddingHorizontal: 30,
+        paddingVertical: 5,
+        borderRadius: 25,
+        borderWidth: 1,
+    },
+    textLogin: {
+        fontSize: 16,
+        color: 'black'
     }
 })
 

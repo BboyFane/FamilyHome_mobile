@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import { Avatar } from 'react-native-elements';
 import Card from '../components/Card';
+import CustomButton from '../components/CustomButton';
 
 // Mocked data
 const username = 'Emerick';
@@ -10,6 +11,9 @@ const fullname = 'Emerick Miatti';
 const email = 'emerick.miatti@imie-paris.fr';
 const image = require('../assets/default.jpg')
 // const image = null
+let notifications = true
+// let notifications = false
+let iconColor
 
 const options = {
     title: 'Select Avatar',
@@ -42,6 +46,10 @@ const ChooseAvatar = () => {
     })
 }
 
+const changeNotificationStatus = () => {
+    notifications == true ? notifications = false : notifications = true
+}
+
 const Profile = ({ navigation }) => {
     return (
         <View style={styles.screen}>
@@ -60,8 +68,14 @@ const Profile = ({ navigation }) => {
                         </View>
                     </View>
                 </Card>
-                <Card style={styles.rectangle}>
-                    <Button title='Se déconnecter' onPress={() => navigation.navigate('Login')} />
+                <Card style={styles.notifications}>
+                    {notifications == true ?
+                        <CustomButton title='Désactiver les notifications' onPress={changeNotificationStatus} buttonStyle={styles.button} />
+                        : <CustomButton title='Activer les notifications' onPress={changeNotificationStatus} buttonStyle={styles.button} />
+                    }
+                </Card>
+                <Card style={styles.logout}>
+                    <CustomButton title='Se déconnecter' onPress={() => navigation.navigate('Login')} buttonStyle={styles.button} />
                 </Card>
             </View>
         </View>
@@ -80,22 +94,24 @@ const styles = StyleSheet.create({
     },
     rectangle: {
         marginVertical: 10,
-        padding: 40
+        justifyContent: 'center',
+        padding: 20
     },
     inlineInformation: {
         flexDirection: 'row',
         justifyContent: 'space-between'
+    },
+    information: {
+        flex: 2 // 2 to respect padding and 3 to have some space
     },
     username: {
         fontSize: 20,
         fontWeight: 'bold',
         marginBottom: 10
     },
-    information: {
-        flex: 2 // 2 to respect padding and 3 to have some space
-    },
     picture: {
-        flex: 1
+        flex: 1,
+        alignItems: 'center'
     },
     avatar: {
         minHeight: 80,
@@ -105,6 +121,15 @@ const styles = StyleSheet.create({
         backgroundColor: '#DCDCDC',
         minHeight: 80,
         minWidth: 80,
+    },
+    notifications: {
+        marginVertical: 10
+    },
+    button: {
+        minHeight: 100
+    },
+    logout: {
+        marginVertical: 10
     }
 })
 

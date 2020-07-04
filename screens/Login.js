@@ -7,7 +7,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 // const verification = data => { }
 
-const isSuccessful = async() => {
+const isSuccessful = async () => {
     navigate('FamilyHome') // delete when next line operational
     // console.log('userToken before press: ',userToken);
     // userToken = 'token value is updated'
@@ -26,10 +26,10 @@ const Login = ({ navigation }) => {
         <View style={styles.screen}>
             <Card style={styles.card}>
                 <Text style={styles.title}>Se connecter à FamilyHome</Text>
-                <TextInput style={styles.field} placeholder="Nom d'utilisateur ou email" textContentType='username' autoCapitalize='none' />
+                <TextInput style={styles.field} placeholder="Adresse email" textContentType='emailAddress' autoCapitalize='none' />
                 <TextInput style={styles.field} placeholder='Mot de passe' secureTextEntry={true} textContentType='password' />
                 <View style={styles.space}>
-                    <CustomButton onPress={isSuccessful}>Se connecter</CustomButton>
+                    <CustomButton title='Se connecter' onPress={isSuccessful} buttonStyle={styles.buttonLogin} textStyle={styles.textLogin} />
                 </View>
                 <Button title='Mot de passe oublié ?' onPress={() => navigation.navigate('Forgot')} />
             </Card>
@@ -63,6 +63,17 @@ const styles = StyleSheet.create({
     space: {
         alignItems: 'center',
         padding: 10
+    },
+    buttonLogin: {
+        backgroundColor: '#DCDCDC',
+        paddingHorizontal: 30,
+        paddingVertical: 5,
+        borderRadius: 25,
+        borderWidth: 1,
+    },
+    textLogin: {
+        fontSize: 16,
+        color: 'black'
     }
 })
 
