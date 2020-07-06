@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import { Avatar } from 'react-native-elements';
@@ -11,12 +11,10 @@ const fullname = 'Emerick Miatti';
 const email = 'emerick.miatti@imie-paris.fr';
 const image = require('../assets/default.jpg')
 // const image = null
-let notifications = true
-// let notifications = false
 let iconColor
 
 const options = {
-    title: 'Select Avatar',
+    title: 'Choisir une photo de profil',
     storageOptions: {
         skipBackup: true,
         path: 'images',
@@ -46,11 +44,12 @@ const ChooseAvatar = () => {
     })
 }
 
-const changeNotificationStatus = () => {
-    notifications == true ? notifications = false : notifications = true
-}
 
 const Profile = ({ navigation }) => {
+    const [notifications, setNotifications] = useState(true)
+    const changeNotificationStatus = () => {
+        notifications == true ? setNotifications(false) : setNotifications(true)
+    }
     return (
         <View style={styles.screen}>
             <View style={styles.listOfElements}>

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button, Linking, StyleSheet } from 'react-native';
 import Card from '../components/Card';
 import CustomButton from '../components/CustomButton';
 import UserToken from '../contexts/UserTokenContext';
@@ -32,6 +32,9 @@ const Login = ({ navigation }) => {
                     <CustomButton title='Se connecter' onPress={isSuccessful} buttonStyle={styles.buttonLogin} textStyle={styles.textLogin} />
                 </View>
                 <Button title='Mot de passe oublié ?' onPress={() => navigation.navigate('Forgot')} />
+            </Card>
+            <Card style={styles.google}>
+                <CustomButton title='Se connecter via Google' onPress={() => Linking.openURL('http://google.com')} buttonStyle={styles.googleLoginButton} />
             </Card>
         </View>
     )
@@ -74,6 +77,13 @@ const styles = StyleSheet.create({
     textLogin: {
         fontSize: 16,
         color: 'black'
+    },
+    google: {
+        minWidth: '100%',
+        margin: 10
+    },
+    googleLoginButton: {
+        minHeight: 60
     }
 })
 

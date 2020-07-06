@@ -3,6 +3,7 @@ import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import Card from '../components/Card';
 import CustomButton from '../components/CustomButton';
 import Icons from 'react-native-vector-icons/MaterialIcons';
+import QuickChange from '../components/QuickChange';
 
 // Mocked data
 const devices = ['google home', 'philips hue', 'light', 'fav light', 'plug']
@@ -17,11 +18,7 @@ const renderListOfDevices = (val, index) => (
 const Room = props => {
     return (
         <View style={styles.screen}>
-            <View style={styles.inline}>
-                <Card style={styles.permanent}><Icons name="album" color={'#8E8E8F'} size={24} /><Text style={styles.centered}>Music</Text></Card>
-                <Card style={styles.permanent}><Icons name="album" color={'#8E8E8F'} size={24} /><Text style={styles.centered}>Light</Text></Card>
-                <Card style={styles.permanent}><Icons name="album" color={'#8E8E8F'} size={24} /><Text style={styles.centered}>Plug</Text></Card>
-            </View>
+            <QuickChange/>
             <View style={styles.listOfElements}>
                 <ScrollView>
                     {devices.map((device, index) => renderListOfDevices(device, index))}
