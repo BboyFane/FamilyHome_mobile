@@ -2,13 +2,17 @@ import React, { useContext, useState } from 'react';
 import { View, Text, TextInput, Button, Linking, StyleSheet } from 'react-native';
 import Card from '../components/Card';
 import CustomButton from '../components/CustomButton';
-import UserToken from '../contexts/UserTokenContext';
+import UserTokenContext from '../contexts/UserTokenContext';
 import AsyncStorage from '@react-native-community/async-storage';
 
 // const verification = data => { }
 
 const isSuccessful = async () => {
-    navigate('FamilyHome') // delete when next line operational
+    console.log('before: ', userToken)
+    userToken = true
+    console.log(userToken)
+
+    // navigate('FamilyHome') // delete when next line operational
     // console.log('userToken before press: ',userToken);
     // userToken = 'token value is updated'
     // console.log('New value userToken: ',userToken);
@@ -21,22 +25,27 @@ const isSuccessful = async () => {
 const Login = ({ navigation }) => {
     // No need to put let or const since there's '= something',
     navigate = navigation.navigate // Is a Function
+    const userToken = useContext(UserTokenContext)
     // userToken = UserToken // Is an Object
     return (
-        <View style={styles.screen}>
-            <Card style={styles.card}>
-                <Text style={styles.title}>Se connecter à FamilyHome</Text>
-                <TextInput style={styles.field} placeholder="Adresse email" textContentType='emailAddress' autoCapitalize='none' />
-                <TextInput style={styles.field} placeholder='Mot de passe' secureTextEntry={true} textContentType='password' />
-                <View style={styles.space}>
-                    <CustomButton title='Se connecter' onPress={isSuccessful} buttonStyle={styles.buttonLogin} textStyle={styles.textLogin} />
-                </View>
-                <Button title='Mot de passe oublié ?' onPress={() => navigation.navigate('Forgot')} />
-            </Card>
-            <Card style={styles.google}>
-                <CustomButton title='Se connecter via Google' onPress={() => Linking.openURL('http://google.com')} buttonStyle={styles.googleLoginButton} />
-            </Card>
-        </View>
+        <UserTokenContext.Provider>
+            <Text>The answer is {JSON.stringify(userToken)}.</Text>
+            {console.log(userToken)}
+            <View style={styles.screen}>
+                <Card style={styles.card}>
+                    <Text style={styles.title}>Se connecter à FamilyHome</Text>
+                    <TextInput style={styles.field} placeholder="Adresse email" textContentType='emailAddress' autoCapitalize='none' />
+                    <TextInput style={styles.field} placeholder='Mot de passe' secureTextEntry={true} textContentType='password' />
+                    <View style={styles.space}>
+                        <CustomButton title='Se connecter' onPress={isSuccessful} buttonStyle={styles.buttonLogin} textStyle={styles.textLogin} />
+                    </View>
+                    <Button title='Mot de passe oublié ?' onPress={() => navigation.navigate('Forgot')} />
+                </Card>
+                <Card style={styles.google}>
+                    <CustomButton title='Se connecter via Google' onPress={() => Linking.openURL('http://google.com')} buttonStyle={styles.googleLoginButton} />
+                </Card>
+            </View>
+        </UserTokenContext.Provider>
     )
 }
 
