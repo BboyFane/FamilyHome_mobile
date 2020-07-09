@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const Map = props => {
+const Map = () => {
     return (
         <View style={styles.screen}>
             <Text>Will display default map of the device or Google Map in our app</Text>

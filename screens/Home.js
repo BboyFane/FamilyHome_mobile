@@ -3,6 +3,7 @@ import { View, ScrollView, StyleSheet } from 'react-native';
 import Card from '../components/Card';
 import CustomButton from '../components/CustomButton';
 import QuickChange from '../components/QuickChange';
+import Fab from '../components/Fab';
 
 // Mocked data
 const rooms = ['Living room', "Daddy's room", 'Brother room', 'Kitchen', 'Bathroom']
@@ -23,6 +24,7 @@ const Home = ({ navigation }) => {
                     {rooms.map((room, index) => renderListOfRooms(room, index, { navigation }))}
                 </ScrollView>
             </View>
+            <Fab icon='mic' onPress={() => navigation.navigate('VocalAssistant')} />
         </View>
     )
 }

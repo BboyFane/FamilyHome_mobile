@@ -4,6 +4,7 @@ import ImagePicker from 'react-native-image-picker';
 import { Avatar } from 'react-native-elements';
 import Card from '../components/Card';
 import CustomButton from '../components/CustomButton';
+import Fab from '../components/Fab';
 
 // Mocked data
 const username = 'Emerick';
@@ -11,7 +12,6 @@ const fullname = 'Emerick Miatti';
 const email = 'emerick.miatti@imie-paris.fr';
 const image = require('../assets/default.jpg')
 // const image = null
-let iconColor
 
 const options = {
     title: 'Choisir une photo de profil',
@@ -52,8 +52,8 @@ const Profile = ({ navigation }) => {
     }
     return (
         <View style={styles.screen}>
-            <View style={styles.listOfElements}>
-                <Card style={styles.rectangle}>
+            <View style={styles.cardSize}>
+                <Card style={styles.profileCard}>
                     <View style={styles.inlineInformation}>
                         <View style={styles.information}>
                             <Text style={styles.username}>{username}</Text>
@@ -66,17 +66,14 @@ const Profile = ({ navigation }) => {
                                 : <Avatar rounded size='large' activeOpacity={0.7} onPress={ChooseAvatar} containerStyle={styles.initial} title="EM" />}
                         </View>
                     </View>
-                </Card>
-                <Card style={styles.notifications}>
                     {notifications == true ?
-                        <CustomButton title='Désactiver les notifications' onPress={changeNotificationStatus} buttonStyle={styles.button} />
-                        : <CustomButton title='Activer les notifications' onPress={changeNotificationStatus} buttonStyle={styles.button} />
+                        <CustomButton title='Désactiver les notifications' onPress={changeNotificationStatus} buttonStyle={styles.profileButton} />
+                        : <CustomButton title='Activer les notifications' onPress={changeNotificationStatus} buttonStyle={styles.profileButton} />
                     }
-                </Card>
-                <Card style={styles.logout}>
-                    <CustomButton title='Se déconnecter' onPress={() => navigation.navigate('Login')} buttonStyle={styles.button} />
+                    <CustomButton title='Se déconnecter' onPress={() => navigation.navigate('Login')} buttonStyle={styles.profileButton} />
                 </Card>
             </View>
+            <Fab icon='mic' onPress={() => navigation.navigate('VocalAssistant')} />
         </View>
     )
 }
@@ -86,14 +83,11 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center'
     },
-    listOfElements: {
-        flex: 1,
-        width: '80%',
-        marginVertical: 10
+    cardSize: {
+        width: '80%'
     },
-    rectangle: {
+    profileCard: {
         marginVertical: 10,
-        justifyContent: 'center',
         padding: 20
     },
     inlineInformation: {
@@ -114,21 +108,15 @@ const styles = StyleSheet.create({
     },
     avatar: {
         minHeight: 80,
-        minWidth: 80,
+        minWidth: 80
     },
     initial: {
         backgroundColor: '#DCDCDC',
         minHeight: 80,
-        minWidth: 80,
+        minWidth: 80
     },
-    notifications: {
-        marginVertical: 10
-    },
-    button: {
-        minHeight: 100
-    },
-    logout: {
-        marginVertical: 10
+    profileButton: {
+        paddingTop: 25
     }
 })
 

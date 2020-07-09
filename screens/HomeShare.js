@@ -1,35 +1,17 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import Card from '../components/Card';
-import CustomButton from '../components/CustomButton';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import Map from './Map';
+import Notes from './Notes';
 
-const HomeShare = ({ navigation }) => {
+const Tab = createMaterialTopTabNavigator();
+
+const HomeShare = () => {
     return (
-        <View style={styles.screen}>
-            <View style={styles.listOfElements}>
-                <Card style={styles.rectangle}><CustomButton title='Localisation' onPress={() => navigation.navigate('Map')} buttonStyle={styles.button} /></Card>
-                <Card style={styles.rectangle}><CustomButton title='Notes' onPress={() => navigation.navigate('Notes')} buttonStyle={styles.button} /></Card>
-            </View>
-        </View>
+        <Tab.Navigator>
+            <Tab.Screen name='Map' component={Map} options={{ title: 'Carte' }} />
+            <Tab.Screen name='Notes' component={Notes} options={{ title: 'HomeNotes' }} />
+        </Tab.Navigator>
     )
 }
-
-const styles = StyleSheet.create({
-    screen: {
-        flex: 1,
-        alignItems: 'center'
-    },
-    listOfElements: {
-        flex: 1,
-        width: '80%',
-        marginVertical: 10
-    },
-    rectangle: {
-        marginVertical: 10
-    },
-    button: {
-        minHeight: 100
-    }
-})
 
 export default HomeShare;

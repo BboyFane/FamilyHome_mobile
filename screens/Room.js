@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import { View, ScrollView, StyleSheet } from 'react-native';
 import Card from '../components/Card';
 import CustomButton from '../components/CustomButton';
-import Icons from 'react-native-vector-icons/MaterialIcons';
 import QuickChange from '../components/QuickChange';
+import Fab from '../components/Fab';
 
 // Mocked data
 const devices = ['google home', 'philips hue', 'light', 'fav light', 'plug']
@@ -15,15 +15,16 @@ const renderListOfDevices = (val, index) => (
         </Card>
     </View>)
 
-const Room = props => {
+const Room = () => {
     return (
         <View style={styles.screen}>
-            <QuickChange/>
+            <QuickChange />
             <View style={styles.listOfElements}>
                 <ScrollView>
                     {devices.map((device, index) => renderListOfDevices(device, index))}
                 </ScrollView>
             </View>
+            <Fab icon='mic' onPress={() => navigation.navigate('VocalAssistant')} />
         </View>
     )
 }
@@ -32,23 +33,6 @@ const styles = StyleSheet.create({
     screen: {
         flex: 1,
         alignItems: 'center'
-    },
-    inline: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        width: '90%',
-        marginVertical: 10
-    },
-    permanent: {
-        // width: 100,
-        // height: 100,
-        // justifyContent: 'center',
-        // alignContent: 'center',
-        padding: '8%'
-    },
-    centered: {
-        // justifyContent: 'center', // For other element that text in the future
-        textAlign: 'center'
     },
     listOfElements: {
         flex: 1,
@@ -59,7 +43,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 5
     },
     rectangle: {
-        marginVertical: 10,
+        marginVertical: 10
     },
     button: {
         minHeight: 100
