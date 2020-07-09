@@ -15,7 +15,7 @@ const renderListOfDevices = (val, index) => (
         </Card>
     </View>)
 
-const Room = () => {
+const Room = ({ navigation }) => {
     return (
         <View style={styles.screen}>
             <QuickChange />
