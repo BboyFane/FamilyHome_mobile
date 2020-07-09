@@ -21,6 +21,11 @@ const Room = ({ navigation }) => {
             <QuickChange />
             <View style={styles.listOfElements}>
                 <ScrollView>
+                    <View style={styles.scroll}>
+                        <Card style={styles.rectangle}>
+                            <CustomButton title='Philips Hue' onPress={() => navigation.navigate('PhilipsHue')} buttonStyle={styles.button} />
+                        </Card>
+                    </View>
                     {devices.map((device, index) => renderListOfDevices(device, index))}
                 </ScrollView>
             </View>

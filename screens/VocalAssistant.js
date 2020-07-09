@@ -5,6 +5,7 @@ const VocalAssistant = props => {
     return (
         <View style={styles.screen}>
             <Text style={styles.title}>Our Vocal Assistant's Name</Text>
+            <Text>Vocal Assistant's Name is now listening</Text>
             <Text>Will display our Vocal Assistant</Text>
         </View>
     )

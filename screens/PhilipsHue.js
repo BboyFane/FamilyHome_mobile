@@ -1,15 +1,24 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Switch, StyleSheet } from 'react-native';
 import Card from '../components/Card';
-import Fab from '../components/Fab';
+import { ColorPicker } from 'react-native-color-picker';
+import hexRgb from 'hex-rgb';
+ 
 
 const PhilipsHue = () => {
+    const [isEnabled, setIsEnabled] = useState(false);
+    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
     return (
         <View style={styles.screen}>
             <View style={styles.listOfElements}>
-                <Text style={styles.title}>Nom de l'ampoule</Text>
-                <Card style={styles.rectangle}><Text>Light</Text></Card>
-                <Fab icon='mic' onPress={() => navigation.navigate('VocalAssistant')} />
+                <Card style={styles.inlineRectangle}>
+                    <Text style={styles.title}>Nom de l'ampoule</Text>
+                    <Switch onValueChange={toggleSwitch} value={isEnabled} />
+                </Card>
+                <View style={{flex:1, bottom: 30}}>
+                <ColorPicker onColorSelected={(color) => {alert(`Color selected: ${color}`);
+            console.log(hexRgb({color}.color))}} style={{ flex: 1 }} />
+                </View>
             </View>
         </View>
     )
@@ -26,12 +35,16 @@ const styles = StyleSheet.create({
         marginVertical: 10
     },
     title: {
-        textAlign: 'center',
-        marginBottom: 20
+        margin: 15,
+        fontSize: 20
     },
-    rectangle: {
+    inlineRectangle: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
         marginVertical: 10,
-        padding: 40
+        padding: 20,
+        // backgroundColor: {color}
     },
 })
 

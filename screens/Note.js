@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     titleNote: {
-        margin: 15,
+        margin: 20,
         fontWeight: 'bold',
         fontSize: 20,
         textAlign: 'center'
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     },
     text: {
         flex: 1,
-        margin: 15
+        margin: 20
     },
 })
 
