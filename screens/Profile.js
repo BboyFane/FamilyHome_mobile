@@ -92,7 +92,8 @@ const styles = StyleSheet.create({
     },
     inlineInformation: {
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        marginBottom: 10
     },
     information: {
         flex: 2 // 2 to respect padding and 3 to have some space
@@ -116,7 +117,7 @@ const styles = StyleSheet.create({
         minWidth: 80
     },
     profileButton: {
-        paddingTop: 25
+        paddingVertical: 10
     }
 })
 
