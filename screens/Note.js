@@ -1,31 +1,34 @@
 import React from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
 
-const Note = props => {
+const Note = ({ route }) => {
+    const { title, text } = route.params
     return (
         <View style={styles.note}>
-            <TextInput style={styles.titleNote}>Yo poto</TextInput>
-            <View style={styles.separator}></View>
-            <TextInput style={styles.text}>Yo poto (du texte)</TextInput>
+            <TextInput placeholder='Titre' multiline={true} maxLength={77} style={styles.titleNote}>{title}</TextInput>
+            <View style={styles.separator} />
+            <TextInput placeholder='Contenu' multiline={true} style={styles.text}>{text}</TextInput>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     note: {
-        // flex: 1
+        flex: 1
     },
     titleNote: {
-        margin: 10,
+        margin: 15,
         fontWeight: 'bold',
-        fontSize: 18
+        fontSize: 20,
+        textAlign: 'center'
     },
     separator: {
-        borderColor: 'black',
+        borderColor: '#D5D5D5',
         borderBottomWidth: 1
     },
     text: {
-        margin: 10
+        flex: 1,
+        margin: 15
     },
 })
 

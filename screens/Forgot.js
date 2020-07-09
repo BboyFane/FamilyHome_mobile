@@ -5,16 +5,16 @@ import CustomButton from '../components/CustomButton';
 
 const Forgot = ({ navigation }) => {
     const submit = () => {
-        Alert.alert('Réinitialiser le mot de passe', 'Vous allez recevoir un email pour réinitialiser votre mot de passe si un compte FamilyHome est bien associé à l\'adresse mail renseignée.\n Veuillez vérifier votre boîte de spams.', [{text: 'OK', onPress: () => resetPassword}])
+        Alert.alert('Réinitialiser le mot de passe', 'Vous allez recevoir un email pour réinitialiser votre mot de passe si un compte FamilyHome est bien associé à l\'adresse mail renseignée.\n Veuillez vérifier votre boîte de spams.', [{ text: 'OK', onPress: () => resetPassword }])
     }
-    const resetPassword = () => {}
+    const resetPassword = () => { }
     return (
         <View style={styles.screen}>
             <Card style={styles.card}>
                 <Text style={styles.title}>Mot de passe oublié ?</Text>
                 <TextInput style={styles.field} placeholder="Adresse email" textContentType='username' autoCapitalize='none' />
                 <View style={styles.space}>
-                    <CustomButton title='Réinitialiser' onPress={submit} buttonStyle={styles.buttonLogin} textStyle={styles.textLogin}/>
+                    <CustomButton title='Réinitialiser' onPress={submit} buttonStyle={styles.buttonLogin} textStyle={styles.textLogin} />
                 </View>
                 <Button title='Se connecter' onPress={() => navigation.navigate('Login')} />
             </Card>
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 30,
         paddingVertical: 5,
         borderRadius: 25,
-        borderWidth: 1,
+        borderWidth: 1
     },
     textLogin: {
         fontSize: 16,

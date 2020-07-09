@@ -1,13 +1,15 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Card from '../components/Card';
+import Fab from '../components/Fab';
 
-const PhilipsHue = props => {
+const PhilipsHue = () => {
     return (
         <View style={styles.screen}>
             <View style={styles.listOfElements}>
                 <Text style={styles.title}>Nom de l'ampoule</Text>
                 <Card style={styles.rectangle}><Text>Light</Text></Card>
+                <Fab icon='mic' onPress={() => navigation.navigate('VocalAssistant')} />
             </View>
         </View>
     )

@@ -13,12 +13,12 @@ const CustomButton = props => {
 
 const styles = StyleSheet.create({
     button: {
-        justifyContent: 'center',
+        justifyContent: 'center'
     },
     buttonText: {
         textAlign: 'center',
-        fontSize: 18,
         color: '#007AFF',
+        fontSize: 18
     }
 });
 

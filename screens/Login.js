@@ -29,7 +29,7 @@ const Login = ({ navigation }) => {
                 <TextInput style={styles.field} placeholder="Adresse email" textContentType='emailAddress' autoCapitalize='none' />
                 <TextInput style={styles.field} placeholder='Mot de passe' secureTextEntry={true} textContentType='password' />
                 <View style={styles.space}>
-                    <CustomButton title='Se connecter' onPress={isSuccessful} buttonStyle={styles.buttonLogin} textStyle={styles.textLogin} />
+                    <CustomButton title='Se connecter' onPress={isSuccessful} buttonStyle={styles.loginButton} textStyle={styles.loginText} />
                 </View>
                 <Button title='Mot de passe oublié ?' onPress={() => navigation.navigate('Forgot')} />
             </Card>
@@ -67,14 +67,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 10
     },
-    buttonLogin: {
+    loginButton: {
         backgroundColor: '#DCDCDC',
         paddingHorizontal: 30,
         paddingVertical: 5,
         borderRadius: 25,
         borderWidth: 1,
     },
-    textLogin: {
+    loginText: {
         fontSize: 16,
         color: 'black'
     },
