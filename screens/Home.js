@@ -1,21 +1,24 @@
-import React from 'react';
-import { View, ScrollView, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, ScrollView, Switch, StyleSheet } from 'react-native';
 import Card from '../components/Card';
 import CustomButton from '../components/CustomButton';
 import QuickChange from '../components/QuickChange';
 import Fab from '../components/Fab';
 
-// Mocked data
-const rooms = ['Living room', "Daddy's room", 'Brother room', 'Kitchen', 'Bathroom']
-// List of devices
-const renderListOfRooms = (val, index, { navigation }) => (
-    <View key={index} style={styles.scroll}>
-        <Card style={styles.rectangle}>
-            <CustomButton title={val} onPress={() => navigation.navigate('Room')} buttonStyle={styles.button} />
-        </Card>
-    </View>)
-
 const Home = ({ navigation }) => {
+    const [isEnabled, setIsEnabled] = useState(false);
+    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+    // Mocked data
+    const rooms = ['Living room', "Daddy's room", 'Brother room', 'Kitchen', 'Bathroom']
+    // List of devices
+    const renderListOfRooms = (val, index, { navigation }) => (
+        <View key={index} style={styles.scroll}>
+            <Card style={styles.inlineRectangle}>
+                <CustomButton title={val} onPress={() => navigation.navigate('Room')} buttonStyle={styles.button} textStyle={styles.text} />
+                <Switch onValueChange={toggleSwitch} value={isEnabled} />
+            </Card>
+        </View>)
+    
     return (
         <View style={styles.screen}>
             <QuickChange />
@@ -42,11 +45,19 @@ const styles = StyleSheet.create({
     scroll: {
         paddingHorizontal: 5
     },
-    rectangle: {
-        marginVertical: 10
+    inlineRectangle: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginVertical: 10,
+        paddingHorizontal: 20,
     },
     button: {
-        minHeight: 100
+        minHeight: 100,
+        minWidth: 230
+    },
+    text: {
+        textAlign: 'left'
     }
 })
 

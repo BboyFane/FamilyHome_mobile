@@ -1,29 +1,33 @@
-import React from 'react';
-import { View, ScrollView, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, ScrollView, Switch, StyleSheet } from 'react-native';
 import Card from '../components/Card';
 import CustomButton from '../components/CustomButton';
 import QuickChange from '../components/QuickChange';
 import Fab from '../components/Fab';
 
-// Mocked data
-const devices = ['google home', 'philips hue', 'light', 'fav light', 'plug']
-// List of devices
-const renderListOfDevices = (val, index) => (
-    <View key={index} style={styles.scroll}>
-        <Card style={styles.rectangle}>
-            <CustomButton title={val} onPress={() => { }} buttonStyle={styles.button} />
-        </Card>
-    </View>)
-
 const Room = ({ navigation }) => {
+    const [isEnabled, setIsEnabled] = useState(false);
+    const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+    // Mocked data
+    const devices = ['google home', 'philips hue', 'light', 'fav light', 'plug']
+    // List of devices
+    const renderListOfDevices = (val, index) => (
+        <View key={index} style={styles.scroll}>
+            <Card style={styles.inlineRectangle}>
+                <CustomButton title={val} onPress={() => { }} buttonStyle={styles.button} textStyle={styles.text} />
+                <Switch onValueChange={toggleSwitch} value={isEnabled} />
+            </Card>
+        </View>)
+
     return (
         <View style={styles.screen}>
             <QuickChange />
             <View style={styles.listOfElements}>
                 <ScrollView>
                     <View style={styles.scroll}>
-                        <Card style={styles.rectangle}>
-                            <CustomButton title='Philips Hue' onPress={() => navigation.navigate('PhilipsHue')} buttonStyle={styles.button} />
+                        <Card style={styles.inlineRectangle}>
+                            <CustomButton title='Philips Hue' onPress={() => navigation.navigate('PhilipsHue')} buttonStyle={styles.button} textStyle={styles.text} />
+                            <Switch onValueChange={toggleSwitch} value={isEnabled} />
                         </Card>
                     </View>
                     {devices.map((device, index) => renderListOfDevices(device, index))}
@@ -47,11 +51,19 @@ const styles = StyleSheet.create({
     scroll: {
         paddingHorizontal: 5
     },
-    rectangle: {
-        marginVertical: 10
+    inlineRectangle: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginVertical: 10,
+        paddingHorizontal: 20,
     },
     button: {
-        minHeight: 100
+        minHeight: 70,
+        minWidth: 230
+    },
+    text: {
+        textAlign: 'left'
     }
 })
 
