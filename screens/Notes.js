@@ -35,12 +35,11 @@ const styles = StyleSheet.create({
     },
     button: {
         paddingHorizontal: 20,
-        minHeight: 50,
-        maxHeight: 70
+        maxHeight: 90
     },
     text: {
         textAlign: 'left',
-        paddingVertical: 10,
+        paddingVertical: 15,
         color: 'black'
     },
     separator: {
