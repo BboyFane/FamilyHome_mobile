@@ -18,7 +18,10 @@ const isSuccessful = async () => {
     // return true
 }
 
-const Login = ({ navigation }) => {
+const Login = (props) => {
+    requireAuth = props.route.params.requireAuth
+    navigation = props.navigation
+    
     // No need to put let or const since there's '= something',
     navigate = navigation.navigate // Is a Function
     // userToken = UserToken // Is an Object
@@ -29,12 +32,9 @@ const Login = ({ navigation }) => {
                 <TextInput style={styles.field} placeholder="Adresse email" textContentType='emailAddress' autoCapitalize='none' />
                 <TextInput style={styles.field} placeholder='Mot de passe' secureTextEntry={true} textContentType='password' />
                 <View style={styles.space}>
-                    <CustomButton title='Se connecter' onPress={isSuccessful} buttonStyle={styles.loginButton} textStyle={styles.loginText} />
+                    <CustomButton title='Se connecter' onPress={() => requireAuth()} buttonStyle={styles.loginButton} textStyle={styles.loginText} />
                 </View>
                 <Button title='Mot de passe oublié ?' onPress={() => navigation.navigate('Forgot')} />
-            </Card>
-            <Card style={styles.google}>
-                <CustomButton title='Se connecter via Google' onPress={() => Linking.openURL('http://google.com')} buttonStyle={styles.googleLoginButton} />
             </Card>
         </View>
     )
@@ -77,13 +77,6 @@ const styles = StyleSheet.create({
     loginText: {
         fontSize: 16,
         color: 'black'
-    },
-    google: {
-        minWidth: '100%',
-        margin: 10
-    },
-    googleLoginButton: {
-        minHeight: 60
     }
 })
 

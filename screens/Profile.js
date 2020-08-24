@@ -45,7 +45,10 @@ const ChooseAvatar = () => {
 }
 
 
-const Profile = ({ navigation }) => {
+const Profile = (props) => {
+    logout = props.route.params.logout
+    navigation = props.navigation
+
     const [notifications, setNotifications] = useState(true)
     const changeNotificationStatus = () => {
         notifications == true ? setNotifications(false) : setNotifications(true)
@@ -70,7 +73,7 @@ const Profile = ({ navigation }) => {
                         <CustomButton title='Désactiver les notifications' onPress={changeNotificationStatus} buttonStyle={styles.profileButton} />
                         : <CustomButton title='Activer les notifications' onPress={changeNotificationStatus} buttonStyle={styles.profileButton} />
                     }
-                    <CustomButton title='Se déconnecter' onPress={() => navigation.navigate('Login')} buttonStyle={styles.profileButton} />
+                    <CustomButton title='Se déconnecter' onPress={() => logout()} buttonStyle={styles.profileButton} />
                 </Card>
             </View>
             <Fab icon='mic' onPress={() => navigation.navigate('VocalAssistant')} />
