@@ -36,9 +36,6 @@ const Login = (props) => {
                 </View>
                 <Button title='Mot de passe oublié ?' onPress={() => navigation.navigate('Forgot')} />
             </Card>
-            <Card style={styles.google}>
-                <CustomButton title='Se connecter via Google' onPress={() => Linking.openURL('http://google.com')} buttonStyle={styles.googleLoginButton} />
-            </Card>
         </View>
     )
 }
@@ -80,13 +77,6 @@ const styles = StyleSheet.create({
     loginText: {
         fontSize: 16,
         color: 'black'
-    },
-    google: {
-        minWidth: '100%',
-        margin: 10
-    },
-    googleLoginButton: {
-        minHeight: 60
     }
 })
 

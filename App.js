@@ -27,10 +27,11 @@ export default function App({ navigation }) {
   const requireAuth = () => {
     setIsConnect(true)
     return isConnect
-    // isConnect = isConnect ? false : true
-    // console.log("isConnect",isConnect);
+  }
 
-    // return !isConnect
+  const logout = () => {
+    setIsConnect(false)
+    return isConnect
   }
 
   return (
@@ -43,7 +44,7 @@ export default function App({ navigation }) {
           </>
         ) : (
             <>
-              <Stack.Screen name='FamilyHome' component={TabBar} options={{ title: 'FamilyHome' }} />
+              <Stack.Screen name='FamilyHome' component={TabBar} options={{ title: 'FamilyHome' }} initialParams={{ 'logout': logout }} />
               <Stack.Screen name='Room' component={Room} options={{ title: 'Room' }} />
               {rooms.map((room, index) => renderListOfRooms(room, index))}
               <Stack.Screen name='Note' component={Note} options={{ title: 'Note' }} />
