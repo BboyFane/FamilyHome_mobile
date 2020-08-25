@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Alert } from 'react-native';
+import Icons from 'react-native-vector-icons/MaterialIcons';
 import ImagePicker from 'react-native-image-picker';
 import { Avatar } from 'react-native-elements';
 import Card from '../components/Card';
@@ -48,7 +49,19 @@ const ChooseAvatar = () => {
 const Profile = (props) => {
     logout = props.route.params.logout
     navigation = props.navigation
-
+    const [password, setPassword] = useState('il y a 32 caractères dans le code')
+    // function strReplace(myStr){
+    //     myStr.replace(/[a-zA-Z0-9]/g, "*");
+    //     return myStr
+    // }
+    // console.log('old value', password);
+    // setPassword(strReplace(password))
+    // console.log('new value', password);
+    
+    const change = () => {
+        Alert.alert('Comportement changement de mot de passe', 'Faire un TextInput', [{ text: 'OK', onPress: () => saveNewPassword }])
+    }
+    const saveNewPassword = () => { }
     const [notifications, setNotifications] = useState(true)
     const changeNotificationStatus = () => {
         notifications == true ? setNotifications(false) : setNotifications(true)
@@ -59,7 +72,10 @@ const Profile = (props) => {
                 <Card style={styles.profileCard}>
                     <View style={styles.inlineInformation}>
                         <View style={styles.information}>
-                            <Text style={styles.username}>{username}</Text>
+                            <View style={styles.inlineText}>
+                                <TextInput style={styles.username}>{username}</TextInput>
+                                <Icons name='edit' color={'grey'} size={24} />
+                            </View>
                             <Text>{fullname}</Text>
                             <Text>{email}</Text>
                         </View>
@@ -69,6 +85,13 @@ const Profile = (props) => {
                                 : <Avatar rounded size='large' activeOpacity={0.7} onPress={ChooseAvatar} containerStyle={styles.initial} title="EM" />}
                         </View>
                     </View>
+                    <View style={styles.inlineText}>
+                        <Text>Mot de passe : </Text>
+                        <TextInput style={{ flex: 1 }}>{password}</TextInput>
+                        <Icons name='edit' color={'grey'} size={24} />
+                    </View>
+                    <CustomButton title='Changer de mot de passe' onPress={change} buttonStyle={styles.profileButton} textStyle={styles.textLogin} />
+
                     {notifications == true ?
                         <CustomButton title='Désactiver les notifications' onPress={changeNotificationStatus} buttonStyle={styles.profileButton} />
                         : <CustomButton title='Activer les notifications' onPress={changeNotificationStatus} buttonStyle={styles.profileButton} />
@@ -98,13 +121,22 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         marginBottom: 10
     },
+    inlineText: {
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        alignItems: 'center'
+    },
     information: {
         flex: 2 // 2 to respect padding and 3 to have some space
     },
     username: {
         fontSize: 20,
         fontWeight: 'bold',
-        marginBottom: 10
+        borderBottomWidth: 1,
+        borderColor: '#AEAEAE',
+        paddingLeft: 10,
+        marginBottom: 10,
+        width: '90%'
     },
     picture: {
         flex: 1,
