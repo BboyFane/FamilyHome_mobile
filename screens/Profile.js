@@ -8,7 +8,7 @@ import CustomButton from '../components/CustomButton';
 import Fab from '../components/Fab';
 
 // Mocked data
-const username = 'Emerick';
+// const username = 'Emerick';
 const fullname = 'Emerick Miatti';
 const email = 'emerick.miatti@imie-paris.fr';
 const image = require('../assets/default.jpg')
@@ -49,19 +49,21 @@ const ChooseAvatar = () => {
 const Profile = (props) => {
     logout = props.route.params.logout
     navigation = props.navigation
-    const [password, setPassword] = useState('il y a 32 caractères dans le code')
-    // function strReplace(myStr){
-    //     myStr.replace(/[a-zA-Z0-9]/g, "*");
-    //     return myStr
-    // }
-    // console.log('old value', password);
-    // setPassword(strReplace(password))
-    // console.log('new value', password);
+    const [username, setUsername] = useState('Emerick')
+    const [password, setPassword] = useState('')
     
-    const change = () => {
-        Alert.alert('Comportement changement de mot de passe', 'Faire un TextInput', [{ text: 'OK', onPress: () => saveNewPassword }])
+    const changeUsername = (username) => {
+        Alert.alert("Vous venez de changer votre nom d'utilisateur", "Votre nom d'utilisateur a bien été modifié.", [{ text: 'OK', onPress: () => saveNewUsername(username) }])
     }
-    const saveNewPassword = () => { }
+    const saveNewUsername = (newUsername) => {
+        console.log('username:', newUsername, '.');
+    }
+    const changePassword = (password) => {
+        Alert.alert('Vous venez de changer de mot de passe', 'Votre mot de passe a bien été modifié.', [{ text: 'OK', onPress: () => saveNewPassword(password) }])
+    }
+    const saveNewPassword = (newPassword) => {
+        console.log('password:', newPassword, '.');
+    }
     const [notifications, setNotifications] = useState(true)
     const changeNotificationStatus = () => {
         notifications == true ? setNotifications(false) : setNotifications(true)
@@ -73,7 +75,7 @@ const Profile = (props) => {
                     <View style={styles.inlineInformation}>
                         <View style={styles.information}>
                             <View style={styles.inlineText}>
-                                <TextInput style={styles.username}>{username}</TextInput>
+                                <TextInput onChangeText={username => setUsername(username)} defaultValue={username} style={styles.username}/>
                                 <Icons name='edit' color={'grey'} size={24} />
                             </View>
                             <Text>{fullname}</Text>
@@ -87,11 +89,11 @@ const Profile = (props) => {
                     </View>
                     <View style={styles.inlineText}>
                         <Text>Mot de passe : </Text>
-                        <TextInput style={{ flex: 1 }}>{password}</TextInput>
+                        <TextInput onChangeText={password => setPassword(password)} defaultValue={password} style={{ flex: 1 }} placeholder='nouveau mot de passe'/>
                         <Icons name='edit' color={'grey'} size={24} />
                     </View>
-                    <CustomButton title='Changer de mot de passe' onPress={change} buttonStyle={styles.profileButton} textStyle={styles.textLogin} />
-
+                    <CustomButton title="Changer de nom d'utilisateur" onPress={() => changeUsername(username)} buttonStyle={styles.profileButton} textStyle={styles.textLogin} />
+                    <CustomButton title='Changer de mot de passe' onPress={() => changePassword(password)} buttonStyle={styles.profileButton} textStyle={styles.textLogin} />
                     {notifications == true ?
                         <CustomButton title='Désactiver les notifications' onPress={changeNotificationStatus} buttonStyle={styles.profileButton} />
                         : <CustomButton title='Activer les notifications' onPress={changeNotificationStatus} buttonStyle={styles.profileButton} />
