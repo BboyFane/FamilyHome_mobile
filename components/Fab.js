@@ -6,7 +6,7 @@ import Icons from 'react-native-vector-icons/MaterialIcons';
 
 const Fab = props => {
     return (
-        <Card style={{...styles.fab, ...props.fabStyle}}>
+        <Card style={{ ...styles.fab, ...props.fabStyle }}>
             <CustomButton title={<Icons name={props.icon} size={24} />} onPress={props.onPress} />
         </Card>
     )
