@@ -4,6 +4,7 @@ import Card from '../components/Card';
 import CustomButton from '../components/CustomButton';
 import UserToken from '../contexts/UserTokenContext';
 import AsyncStorage from '@react-native-community/async-storage';
+import Axios from 'axios';
 
 // const verification = data => { }
 
@@ -21,7 +22,29 @@ const isSuccessful = async () => {
 const Login = (props) => {
     requireAuth = props.route.params.requireAuth
     navigation = props.navigation
-    
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    connexion = (email, password) => {
+        if ((password.value === "") || (email.value === "")) {
+            alert("Error! Veuillez SVP renseignez le(s) champ(s) manquant(s)!");
+        } else {
+            Axios.post('http://localhost:3005/user/connect', {
+                email: email.value,
+                pwd: password.value
+            }).then(response => {
+                console.log(response)
+                //   var x = 0
+                //   x = response.data['code']
+                //  // console.log(response.data['CONNEXION REUSSIE']['key'])
+                //   if (typeof  x === "undefined") {
+                //     console.log(x)
+                //      console.log(response.data['CONNEXION REUSSIE'])
+                //   }else {
+                //       alert("Error!" + response.data['Message']);
+                //   }
+            });
+        }
+    }
     // No need to put let or const since there's '= something',
     navigate = navigation.navigate // Is a Function
     // userToken = UserToken // Is an Object
@@ -29,8 +52,8 @@ const Login = (props) => {
         <View style={styles.screen}>
             <Card style={styles.card}>
                 <Text style={styles.title}>Se connecter à FamilyHome</Text>
-                <TextInput style={styles.field} placeholder="Adresse email" textContentType='emailAddress' autoCapitalize='none' />
-                <TextInput style={styles.field} placeholder='Mot de passe' secureTextEntry={true} textContentType='password' />
+                <TextInput onChangeText={email => setEmail(email)} style={styles.field} placeholder="Adresse email" textContentType='emailAddress' autoCapitalize='none' id='email' />
+                <TextInput onChangeText={password => setPassword(password)} style={styles.field} placeholder='Mot de passe' secureTextEntry={true} textContentType='password' id='pwd' />
                 <View style={styles.space}>
                     <CustomButton title='Se connecter' onPress={() => requireAuth()} buttonStyle={styles.loginButton} textStyle={styles.loginText} />
                 </View>
