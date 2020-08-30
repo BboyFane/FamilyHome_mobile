@@ -53,16 +53,19 @@ const Profile = (props) => {
     const [password, setPassword] = useState('')
     
     const changeUsername = (username) => {
-        Alert.alert("Vous venez de changer votre nom d'utilisateur", "Votre nom d'utilisateur a bien été modifié.", [{ text: 'OK', onPress: () => saveNewUsername(username) }])
+        Alert.alert("Changement de nom d'utilisateur", "Votre nom d'utilisateur a bien été modifié.", [{ text: 'OK', onPress: () => saveNewUsername(username) }])
     }
     const saveNewUsername = (newUsername) => {
         console.log('username:', newUsername, '.');
     }
     const changePassword = (password) => {
-        Alert.alert('Vous venez de changer de mot de passe', 'Votre mot de passe a bien été modifié.', [{ text: 'OK', onPress: () => saveNewPassword(password) }])
+        Alert.alert('Changement de mot de passe', 'Votre mot de passe a bien été modifié.', [{ text: 'OK', onPress: () => saveNewPassword(password) }])
     }
     const saveNewPassword = (newPassword) => {
         console.log('password:', newPassword, '.');
+    }
+    const deactivateAccount = (email) => {
+        Alert.alert("Désactivation de compte", "Nous avons pris en compte votre demande.", [{ text: 'OK', onPress: () => saveNewUsername(username) }])
     }
     const [notifications, setNotifications] = useState(true)
     const changeNotificationStatus = () => {
@@ -92,13 +95,14 @@ const Profile = (props) => {
                         <TextInput onChangeText={password => setPassword(password)} defaultValue={password} style={{ flex: 1 }} placeholder='nouveau mot de passe'/>
                         <Icons name='edit' color={'grey'} size={24} />
                     </View>
-                    <CustomButton title="Changer de nom d'utilisateur" onPress={() => changeUsername(username)} buttonStyle={styles.profileButton} textStyle={styles.textLogin} />
-                    <CustomButton title='Changer de mot de passe' onPress={() => changePassword(password)} buttonStyle={styles.profileButton} textStyle={styles.textLogin} />
+                    <CustomButton title="Changer de nom d'utilisateur" onPress={() => changeUsername(username)} buttonStyle={styles.profileButton} />
+                    <CustomButton title='Changer de mot de passe' onPress={() => changePassword(password)} buttonStyle={styles.profileButton} />
                     {notifications == true ?
                         <CustomButton title='Désactiver les notifications' onPress={changeNotificationStatus} buttonStyle={styles.profileButton} />
                         : <CustomButton title='Activer les notifications' onPress={changeNotificationStatus} buttonStyle={styles.profileButton} />
                     }
                     <CustomButton title='Se déconnecter' onPress={() => logout()} buttonStyle={styles.profileButton} />
+                    <CustomButton title="Désactiver mon compte utilisateur" onPress={() => deactivateAccount(email)} buttonStyle={styles.profileButton} textStyle={styles.deactivateButton} />
                 </Card>
             </View>
             <Fab icon='mic' onPress={() => navigation.navigate('VocalAssistant')} />
@@ -155,6 +159,9 @@ const styles = StyleSheet.create({
     },
     profileButton: {
         paddingVertical: 10
+    },
+    deactivateButton: {
+        color: '#F00'
     }
 })
 
