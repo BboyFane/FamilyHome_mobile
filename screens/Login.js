@@ -24,13 +24,16 @@ const Login = (props) => {
     navigation = props.navigation
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    connexion = (email, password) => {
-        if ((password.value === "") || (email.value === "")) {
-            alert("Error! Veuillez SVP renseignez le(s) champ(s) manquant(s)!");
+    connexion = (email, pwd) => {
+        console.log('email:', email, 'password:', pwd); // Fetching data ok
+        if ((pwd.value === "") || (email.value === "")) {
+            alert("Veuillez renseigner correctement tous les champs.");
         } else {
+            console.log('In the else');
+            
             Axios.post('http://localhost:3005/user/connect', {
-                email: email.value,
-                pwd: password.value
+                email: email,
+                pwd: pwd
             }).then(response => {
                 console.log(response)
                 //   var x = 0
@@ -56,6 +59,7 @@ const Login = (props) => {
                 <TextInput onChangeText={password => setPassword(password)} style={styles.field} placeholder='Mot de passe' secureTextEntry={true} textContentType='password' id='pwd' />
                 <View style={styles.space}>
                     <CustomButton title='Se connecter' onPress={() => requireAuth()} buttonStyle={styles.loginButton} textStyle={styles.loginText} />
+                    {/* <CustomButton title='Se connecter' onPress={() => connexion(email, password)} buttonStyle={styles.loginButton} textStyle={styles.loginText} /> */}
                 </View>
                 <Button title='Mot de passe oublié ?' onPress={() => navigation.navigate('Forgot')} />
             </Card>
