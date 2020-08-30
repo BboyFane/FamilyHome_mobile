@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Alert } from 'react-native';
+import Icons from 'react-native-vector-icons/MaterialIcons';
 import ImagePicker from 'react-native-image-picker';
 import { Avatar } from 'react-native-elements';
 import Card from '../components/Card';
@@ -7,7 +8,7 @@ import CustomButton from '../components/CustomButton';
 import Fab from '../components/Fab';
 
 // Mocked data
-const username = 'Emerick';
+// const username = 'Emerick';
 const fullname = 'Emerick Miatti';
 const email = 'emerick.miatti@imie-paris.fr';
 const image = require('../assets/default.jpg')
@@ -48,7 +49,21 @@ const ChooseAvatar = () => {
 const Profile = (props) => {
     logout = props.route.params.logout
     navigation = props.navigation
-
+    const [username, setUsername] = useState('Emerick')
+    const [password, setPassword] = useState('')
+    
+    const changeUsername = (username) => {
+        Alert.alert("Vous venez de changer votre nom d'utilisateur", "Votre nom d'utilisateur a bien été modifié.", [{ text: 'OK', onPress: () => saveNewUsername(username) }])
+    }
+    const saveNewUsername = (newUsername) => {
+        console.log('username:', newUsername, '.');
+    }
+    const changePassword = (password) => {
+        Alert.alert('Vous venez de changer de mot de passe', 'Votre mot de passe a bien été modifié.', [{ text: 'OK', onPress: () => saveNewPassword(password) }])
+    }
+    const saveNewPassword = (newPassword) => {
+        console.log('password:', newPassword, '.');
+    }
     const [notifications, setNotifications] = useState(true)
     const changeNotificationStatus = () => {
         notifications == true ? setNotifications(false) : setNotifications(true)
@@ -59,7 +74,10 @@ const Profile = (props) => {
                 <Card style={styles.profileCard}>
                     <View style={styles.inlineInformation}>
                         <View style={styles.information}>
-                            <Text style={styles.username}>{username}</Text>
+                            <View style={styles.inlineText}>
+                                <TextInput onChangeText={username => setUsername(username)} defaultValue={username} style={styles.username}/>
+                                <Icons name='edit' color={'grey'} size={24} />
+                            </View>
                             <Text>{fullname}</Text>
                             <Text>{email}</Text>
                         </View>
@@ -69,6 +87,13 @@ const Profile = (props) => {
                                 : <Avatar rounded size='large' activeOpacity={0.7} onPress={ChooseAvatar} containerStyle={styles.initial} title="EM" />}
                         </View>
                     </View>
+                    <View style={styles.inlineText}>
+                        <Text>Mot de passe : </Text>
+                        <TextInput onChangeText={password => setPassword(password)} defaultValue={password} style={{ flex: 1 }} placeholder='nouveau mot de passe'/>
+                        <Icons name='edit' color={'grey'} size={24} />
+                    </View>
+                    <CustomButton title="Changer de nom d'utilisateur" onPress={() => changeUsername(username)} buttonStyle={styles.profileButton} textStyle={styles.textLogin} />
+                    <CustomButton title='Changer de mot de passe' onPress={() => changePassword(password)} buttonStyle={styles.profileButton} textStyle={styles.textLogin} />
                     {notifications == true ?
                         <CustomButton title='Désactiver les notifications' onPress={changeNotificationStatus} buttonStyle={styles.profileButton} />
                         : <CustomButton title='Activer les notifications' onPress={changeNotificationStatus} buttonStyle={styles.profileButton} />
@@ -98,13 +123,22 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         marginBottom: 10
     },
+    inlineText: {
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
+        alignItems: 'center'
+    },
     information: {
         flex: 2 // 2 to respect padding and 3 to have some space
     },
     username: {
         fontSize: 20,
         fontWeight: 'bold',
-        marginBottom: 10
+        borderBottomWidth: 1,
+        borderColor: '#AEAEAE',
+        paddingLeft: 10,
+        marginBottom: 10,
+        width: '90%'
     },
     picture: {
         flex: 1,
