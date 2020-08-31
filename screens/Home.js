@@ -6,11 +6,12 @@ import QuickChange from '../components/QuickChange';
 import Fab from '../components/Fab';
 
 const Home = ({ navigation }) => {
+    // Toggle switch logic
     const [isEnabled, setIsEnabled] = useState(false);
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
     // Mocked data
-    const rooms = ['Living room', "Daddy's room", 'Brother room', 'Kitchen', 'Bathroom']
-    // List of devices
+    const rooms = ['Living room', "Daddy's room", 'Brother room', 'Kitchen', 'Bathroom'] // Will fetch array from API
+    // List of rooms
     const renderListOfRooms = (val, index, { navigation }) => (
         <View key={index} style={styles.scroll}>
             <Card style={styles.inlineRectangle}>
@@ -18,7 +19,7 @@ const Home = ({ navigation }) => {
                 <Switch onValueChange={toggleSwitch} value={isEnabled} />
             </Card>
         </View>)
-    
+        
     return (
         <View style={styles.screen}>
             <QuickChange />
