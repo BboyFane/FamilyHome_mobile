@@ -50,7 +50,6 @@ const styles = StyleSheet.create({
         minHeight: 70
     },
     button: {
-        // minHeight: 100,
         minWidth: 230
     },
     text: {
