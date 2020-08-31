@@ -30,7 +30,6 @@ const Login = (props) => {
             alert("Veuillez renseigner correctement tous les champs.");
         } else {
             console.log('In the else');
-            
             Axios.post('http://localhost:3005/user/connect', {
                 email: email,
                 pwd: pwd
@@ -48,9 +47,8 @@ const Login = (props) => {
             });
         }
     }
-    // No need to put let or const since there's '= something',
-    navigate = navigation.navigate // Is a Function
     // userToken = UserToken // Is an Object
+    
     return (
         <View style={styles.screen}>
             <Card style={styles.card}>

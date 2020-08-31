@@ -6,19 +6,20 @@ import QuickChange from '../components/QuickChange';
 import Fab from '../components/Fab';
 
 const Room = ({ navigation }) => {
+    // Toggle switch logic
     const [isEnabled, setIsEnabled] = useState(false);
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
     // Mocked data
-    const devices = ['google home', 'philips hue', 'light', 'fav light', 'plug']
+    const devices = [['google home', false], ['philips hue', true], ['light', true], ['fav light', true], ['plug', false]] // Will fetch array from API
     // List of devices
     const renderListOfDevices = (val, index) => (
         <View key={index} style={styles.scroll}>
             <Card style={styles.inlineRectangle}>
-                <CustomButton title={val} onPress={() => { }} buttonStyle={styles.button} textStyle={styles.text} />
+                <CustomButton title={val[0]} onPress={() => val[1] == true ? navigation.navigate('PhilipsHue', { name: val[0] }) : {}} buttonStyle={styles.button} textStyle={styles.text} />
                 <Switch onValueChange={toggleSwitch} value={isEnabled} />
             </Card>
         </View>)
-
+        
     return (
         <View style={styles.screen}>
             <QuickChange />

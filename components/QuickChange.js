@@ -5,24 +5,25 @@ import Icons from 'react-native-vector-icons/MaterialIcons';
 import CustomButton from './CustomButton';
 
 const QuickChange = () => {
+    // Colors
     const activeColor = '#007AFF'
     const inactiveColor = '#8E8E8F'
-    // const [musicColor, setMusicColor] = useState(inactiveColor)
-    const [lightColor, setLightColor] = useState(inactiveColor)
-    const [plugColor, setPlugColor] = useState(inactiveColor)
+    // Device states
+    const [lightActiveState, setLightActiveState] = useState(false) // Will fetch boolean from API
+    const [plugActiveState, setPlugActiveState] = useState(false) // Will fetch boolean from API
+    // Icon color change
+    const [lightColor, setLightColor] = useState(lightActiveState == false ? inactiveColor : activeColor)
+    const [plugColor, setPlugColor] = useState(plugActiveState == false ? inactiveColor : activeColor)
+    
     return (
         <View style={styles.inline}>
-            {/* <Card>
-                <Icons name="play-arrow" color={musicColor} size={24} style={{ textAlign: 'center' }} />
-                <CustomButton title='Music' onPress={() => musicColor == (inactiveColor) ? setMusicColor(activeColor) : setMusicColor(inactiveColor)} buttonStyle={styles.button} />
-            </Card> */}
             <Card>
                 <Icons name="lightbulb-outline" color={lightColor} size={24} style={styles.icon} />
-                <CustomButton title='Light' onPress={() => lightColor == (inactiveColor) ? setLightColor(activeColor) : setLightColor(inactiveColor)} buttonStyle={styles.button} />
+                <CustomButton title='Light' onPress={() => lightColor == inactiveColor ? (setLightColor(activeColor), setLightActiveState(!lightActiveState)) : (setLightColor(inactiveColor), setLightActiveState(!lightActiveState))} buttonStyle={styles.button} />
             </Card>
             <Card>
                 <Icons name="power" color={plugColor} size={24} style={styles.icon} />
-                <CustomButton title='Plug' onPress={() => plugColor == (inactiveColor) ? setPlugColor(activeColor) : setPlugColor(inactiveColor)} buttonStyle={styles.button} />
+                <CustomButton title='Plug' onPress={() => plugColor == inactiveColor ? (setPlugColor(activeColor), setPlugActiveState(!plugActiveState)) : (setPlugColor(inactiveColor), setPlugActiveState(!plugActiveState))} buttonStyle={styles.button} />
             </Card>
         </View>
     )

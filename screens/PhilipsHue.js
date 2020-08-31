@@ -3,21 +3,25 @@ import { View, Text, Switch, StyleSheet } from 'react-native';
 import Card from '../components/Card';
 import { ColorPicker } from 'react-native-color-picker';
 import hexRgb from 'hex-rgb';
- 
 
-const PhilipsHue = () => {
+
+const PhilipsHue = props => {
+    // Toggle switch logic
     const [isEnabled, setIsEnabled] = useState(false);
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
     return (
         <View style={styles.screen}>
             <View style={styles.listOfElements}>
                 <Card style={styles.inlineRectangle}>
-                    <Text style={styles.title}>Nom de l'ampoule</Text>
+                    <Text style={styles.title}>{props.route.params != undefined ? props.route.params.name : "Mon ampoule"}</Text>
                     <Switch onValueChange={toggleSwitch} value={isEnabled} />
                 </Card>
-                <View style={{flex:1, bottom: 30}}>
-                <ColorPicker onColorSelected={(color) => {alert(`Color selected: ${color}`);
-            console.log(hexRgb({color}.color))}} style={{ flex: 1 }} />
+                <View style={{ flex: 1, bottom: 30 }}>
+                    <ColorPicker onColorSelected={(color) => {
+                        alert(`Color selected: ${color}`);
+                        console.log(hexRgb({ color }.color))
+                    }} style={{ flex: 1 }} />
                 </View>
             </View>
         </View>

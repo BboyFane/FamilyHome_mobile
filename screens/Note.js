@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
 
 const Note = ({ route }) => {
     const { title, text } = route.params
+    const [noteTitle, setTitle] = useState(title != undefined ? title : '')
+    const [noteText, setText] = useState(text != undefined ? text : '')
     return (
         <View style={styles.note}>
-            <TextInput placeholder='Titre' multiline={true} maxLength={77} style={styles.titleNote}>{title}</TextInput>
+            <TextInput onChangeText={noteTitle => setTitle(noteTitle)} placeholder='Titre' multiline={true} maxLength={77} style={styles.titleNote}>{title}</TextInput>
             <View style={styles.separator} />
-            <TextInput placeholder='Contenu' multiline={true} style={styles.text}>{text}</TextInput>
+            <TextInput onChangeText={noteText => setText(noteText)} placeholder='Contenu' multiline={true} style={styles.text}>{text}</TextInput>
         </View>
     )
 }
